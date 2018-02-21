@@ -58,6 +58,10 @@ getExternalCodeSize:
       network:
         - ALL
       result:
+        # InitialBalance - ADDRESS - EXTCODESIZE - SSTORE - EXTCODESIZE - SSTORE = FinalBalance
+        # 100000000000   - 2       - 700         - 20000  - 700         - 20000  = 99999937598
+        a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          balance: '99999937598'
         abcdabcdabcdabcdabcdabcdabcdabcdabcdabcd:
           storage: {
             # the length of the code specified above in pre for the second address
@@ -70,7 +74,7 @@ getExternalCodeSize:
     - ''
     gasLimit:
     - '0x5000001'
-    gasPrice: '0x02'
+    gasPrice: '0x01'
     nonce: '0x00'
     secretKey: 45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8
     to: 'abcdabcdabcdabcdabcdabcdabcdabcdabcdabcd'

@@ -25,7 +25,7 @@ getCaller:
           (export "memory" (memory 0))
           (func $main
             (call $getCaller (i32.const 32))
-            (call $storageStore (i32.const 0) (i32.const 32))))                        
+            (call $storageStore (i32.const 0) (i32.const 32))))
       nonce: ''
       storage: {}
   expect:
@@ -36,6 +36,14 @@ getCaller:
       network:
         - ALL
       result:
+        # getCaller:        2
+        # storageStore: 20000
+        # tx cost:      21000
+        #--------------------
+        # total:        41002
+        # Final Balance: 99999958998
+        a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          balance: '99999958998'
         b94f5374fce5edbc8e2a8697c15331677e6ebf0b:
           storage: {
             0: '0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b'
@@ -46,7 +54,7 @@ getCaller:
     - ''
     gasLimit:
     - '0x5000001'
-    gasPrice: '0x02'
+    gasPrice: '0x01'
     nonce: '0x00'
     secretKey: 45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8
     to: 'b94f5374fce5edbc8e2a8697c15331677e6ebf0b'

@@ -40,8 +40,8 @@ getGasLeft:
       result:
         b94f5374fce5edbc8e2a8697c15331677e6ebf0b:
           storage: {
-                          # gasLimit - useGas  - txCost? = 4221880 (406bb8)
-            0: '0x406bb8' # 5242880  - 1000000 - 21000   = 4221880 (406bb8)
+                          # gasLimit - getGasLeft  - useGas  - txCost? 
+            0: '0x406bb6' # 5242880  - 2           - 1000000 - 21000   = 4221878 (406bb6)
           }
   transaction:
     data:

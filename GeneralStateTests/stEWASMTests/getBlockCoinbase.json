@@ -1,11 +1,11 @@
 {
-    "getAddress" : {
+    "getBlockCoinbase" : {
         "_info" : {
             "comment" : "",
             "filledwith" : "cpp-1.3.0+commit.ee0c6776.Darwin.appleclang",
             "lllcversion" : "Version: 0.4.20-develop.2018.1.2+commit.efc198d5.Darwin.appleclang",
-            "source" : "src/GeneralStateTestsFiller/stEWASMTests/getAddressFiller.json",
-            "sourceHash" : "6cbd140374e39082af446bfbccf52db7a9c0364b59dfd5dd4acc228d3feaa14f"
+            "source" : "src/GeneralStateTestsFiller/stEWASMTests/getBlockCoinbaseFiller.json",
+            "sourceHash" : "c7b27bb2968e548960777bac3ef6d2b23b9807f2d03e73cbadd7bb82ad3b7d84"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",
@@ -18,7 +18,7 @@
         "post" : {
             "Byzantium" : [
                 {
-                    "hash" : "0xca34d1d74749c126ee24469185b6158fb496c8930e76b1e64ac426af06884999",
+                    "hash" : "0xd3ad99db9b559ce62ac8248e82235692ccda82db7f412e80f432e90e4414710d",
                     "indexes" : {
                         "data" : 0,
                         "gas" : 0,
@@ -36,9 +36,9 @@
                 "storage" : {
                 }
             },
-            "0xb94f5374fce5edbc8e2a8697c15331677e6ebf0b" : {
+            "0xabcdabcdabcdabcdabcdabcdabcdabcdabcdabcd" : {
                 "balance" : "0x174876e800",
-                "code" : "0x0061736d01000000010d0360027f7f0060017f00600000022f0208657468657265756d0c73746f7261676553746f7265000008657468657265756d0a676574416464726573730001030201020503010001071102046d61696e0002066d656d6f727902000a18011601027f4120210041002101200010012001200010000b",
+                "code" : "0x0061736d01000000010d0360017f0060027f7f0060000002350208657468657265756d10676574426c6f636b436f696e62617365000008657468657265756d0c73746f7261676553746f72650001030201020503010001071102046d61696e0002066d656d6f727902000a0e010c00412010004100412010010b",
                 "nonce" : "0x00",
                 "storage" : {
                 }
@@ -54,7 +54,7 @@
             "gasPrice" : "0x01",
             "nonce" : "0x00",
             "secretKey" : "0x45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8",
-            "to" : "0xb94f5374fce5edbc8e2a8697c15331677e6ebf0b",
+            "to" : "0xabcdabcdabcdabcdabcdabcdabcdabcdabcdabcd",
             "value" : [
                 "0x00"
             ]

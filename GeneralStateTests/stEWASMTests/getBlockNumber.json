@@ -2,10 +2,10 @@
     "getBlockNumber" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "cpp-1.3.0+commit.cf6fac08.Darwin.appleclang",
+            "filledwith" : "cpp-1.3.0+commit.ee0c6776.Darwin.appleclang",
             "lllcversion" : "Version: 0.4.20-develop.2018.1.2+commit.efc198d5.Darwin.appleclang",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/getBlockNumberFiller.json",
-            "sourceHash" : "f2dfbb005615c42d8947cf27d6105a435e4361e2c14057b4a80a900eb283982c"
+            "sourceHash" : "49f33742196dd0885e40f597441b019f28c407fb751cd353a613bcea0efa9fc4"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",
@@ -18,7 +18,7 @@
         "post" : {
             "Byzantium" : [
                 {
-                    "hash" : "0x458a5ca581ef0e7efc8c743b544d600a3748c8aa2a634cd81d5b05b1ed36aa7b",
+                    "hash" : "0xce5adcdd2fb86fb22287807be585ce6a175b03cab4aac87a9d5c675b774e6165",
                     "indexes" : {
                         "data" : 0,
                         "gas" : 0,

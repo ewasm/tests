@@ -1,6 +1,7 @@
-# Basic EWASM interface test fro ADDRESS
+# Basic EWASM interfce test for getGasLeft
+# Verify used gas is correct
 ---
-getAddress:
+getGasLeftCountUsedGas:
   env:
     currentCoinbase: 2adc25665018aa1fe0e6bc666dac8fc2697ff9ba
     currentDifficulty: '0x020000'
@@ -19,18 +20,27 @@ getAddress:
       code: |
         (module
           (import "ethereum" "storageStore" (func $storageStore (param i32 i32)))
-          (import "ethereum" "getAddress"   (func $getAddress   (param i32)))
+          (import "ethereum" "getAddress"   (func $getAddress (param i32)))
+          (import "ethereum" "getBalance"   (func $getBalance (param i32 i32)))
+          (import "ethereum" "getGasLeft"   (func $getGasLeft (result i64)))
           (memory 1)
           (export "main" (func $main))
           (export "memory" (memory 0))
           (func $main
             (local $addrOffset i32)
-            (local $keyOffset  i32)
-            (set_local $addrOffset (i32.const 32))
-            (set_local $keyOffset  (i32.const 0))
+            (local $balanceOffset i32)
+            (local $gasLeftOffset i32)
+            (local $keyOffset i32)
+
+            (set_local $addrOffset (i32.const 0))
+            (set_local $balanceOffset (i32.const 32))
+            (set_local $gasLeftOffset (i32.const 96))
+            (set_local $keyOffset (i32.const 64))
             
-            (call $getAddress   (get_local $addrOffset))
-            (call $storageStore (get_local $keyOffset) (get_local $addrOffset))))
+            (call $getAddress (get_local $addrOffset))
+            (call $getBalance (get_local $addrOffset) (get_local $balanceOffset))
+            (i64.store (get_local $gasLeftOffset) (call $getGasLeft))
+            (call $storageStore (get_local $keyOffset) (get_local $gasLeftOffset))))
       nonce: ''
       storage: {}
   expect:
@@ -41,22 +51,22 @@ getAddress:
       network:
         - ALL
       result:
-        # Balance        ADDRESS   SSTORE   TXCOST
-        # 100000000000 - 2       - 20000  - 21000   = 99999958998
         a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
-          balance: '99999958998'
+          balance: '99999958596'
         b94f5374fce5edbc8e2a8697c15331677e6ebf0b:
           storage: {
-            0: '0xb94f5374fce5edbc8e2a8697c15331677e6ebf0b'
+                          # gasLimit - getAddress - getBalance getGasLeft - txCost
+            0: '0x4fac64' # 5242880  - 2            400        - 2        - 21000   = 5221476 (4fac64)
           }
   transaction:
     data:
     - ''
     gasLimit:
-    - '0x5000001'
+    - '0x500000' 
     gasPrice: '0x01'
     nonce: '0x00'
     secretKey: 45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8
     to: 'b94f5374fce5edbc8e2a8697c15331677e6ebf0b'
     value:
     - '0'
+  

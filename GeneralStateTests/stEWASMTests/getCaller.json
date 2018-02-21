@@ -2,10 +2,10 @@
     "getCaller" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "cpp-1.3.0+commit.cf6fac08.Darwin.appleclang",
+            "filledwith" : "cpp-1.3.0+commit.ee0c6776.Darwin.appleclang",
             "lllcversion" : "Version: 0.4.20-develop.2018.1.2+commit.efc198d5.Darwin.appleclang",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/getCallerFiller.json",
-            "sourceHash" : "0d31e8948f9e46189b9050f87609e9dabf5e145dd87ffcf5596116a63f8bf311"
+            "sourceHash" : "41c45240e304c518b75b54316e2261b3858f2d1c604f857e6ddf41b41f322a13"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",
@@ -18,7 +18,7 @@
         "post" : {
             "Byzantium" : [
                 {
-                    "hash" : "0x1018cfb44a2ae80fd849f54d646f3a2a543ce541f7d0b4091dbca1e7616b1ba9",
+                    "hash" : "0x1ccf8f2e8c62291fea9e951639acc36adc35d60348e0c68caf9659bdf3684c71",
                     "indexes" : {
                         "data" : 0,
                         "gas" : 0,
@@ -51,7 +51,7 @@
             "gasLimit" : [
                 "0x5000001"
             ],
-            "gasPrice" : "0x02",
+            "gasPrice" : "0x01",
             "nonce" : "0x00",
             "secretKey" : "0x45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8",
             "to" : "0xb94f5374fce5edbc8e2a8697c15331677e6ebf0b",
