@@ -1,0 +1,66 @@
+{
+    "storageLoad": {
+        "env": {
+            "currentCoinbase": "2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",
+            "currentDifficulty": "0x020000",
+            "currentGasLimit": "89128960",
+            "currentNumber": "1",
+            "currentTimestamp": "1000",
+            "previousHash": "5e20a0453cecd065ea59c37ac63e079ee08998b6045136a8ce6635c7912ec0b6"
+        },
+        "expect": [
+            {
+                "indexes": {
+                    "data": -1,
+                    "gas": -1,
+                    "value": -1
+                },
+                "network": [
+                    "ALL"
+                ],
+                "result": {
+                    "a94f5374fce5edbc8e2a8697c15331677e6ebf0b": {
+                        "balance": "99999958528"
+                    },
+                    "deadbeef00000000000000000000000000000000": {
+                        "storage": {
+                            "0": "0xdeadbeef",
+                            "1": "0xdeadbeef"
+                        }
+                    }
+                }
+            }
+        ],
+        "pre": {
+            "a94f5374fce5edbc8e2a8697c15331677e6ebf0b": {
+                "balance": "100000000000",
+                "code": "",
+                "nonce": "",
+                "storage": {}
+            },
+            "deadbeef00000000000000000000000000000000": {
+                "balance": "100000000000",
+                "code": "0x0061736d0100000001090260027f7f0060000002300208657468657265756d0b73746f726167654c6f6164000008657468657265756d0c73746f7261676553746f72650000030201010503010001071102066d656d6f72790200046d61696e00020a13011100410041f403100041900341f40310010b0b1b01004190030b140100000000000000000000000000000000000000",
+                "nonce": "",
+                "storage": {
+                    "0": "0xdeadbeef"
+                }
+            }
+        },
+        "transaction": {
+            "data": [
+                "0xffff"
+            ],
+            "gasLimit": [
+                "0x5000001"
+            ],
+            "gasPrice": "0x01",
+            "nonce": "0x00",
+            "secretKey": "45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8",
+            "to": "deadbeef00000000000000000000000000000000",
+            "value": [
+                "0"
+            ]
+        }
+    }
+}
