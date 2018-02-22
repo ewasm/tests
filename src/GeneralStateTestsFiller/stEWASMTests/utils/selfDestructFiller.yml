@@ -18,7 +18,6 @@ selfDestruct:
       balance: '100000000000'
       code: |
         (module
-          (import "ethereum" "storageStore" (func $storageStore (param i32 i32)))
           (import "ethereum" "selfDestruct" (func $selfDestruct (param i32)))
           (import "ethereum" "getCaller"    (func $getCaller    (param i32)))
           (memory 1)
@@ -37,10 +36,13 @@ selfDestruct:
       network:
         - ALL
       result:
+        # InitialBalance + destructedBalance - CALLER - SELFDESTRUCT - TXCOST + gasRefund 
+        # 100000000000   + 100000000000      - 2      - 5000         - 21000  + 13000     = 199999997998
+        # if refund (24000) is greater than the half of used gas, then it will only
+        # refunt half the gas used.
         a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
-          balance: '200000000000'
+          balance: '199999986999'
           code: ''
-          nonce: '0'
           storage: {}
   transaction:
     data:
