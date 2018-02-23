@@ -16,8 +16,8 @@ getTxGasPrice:
       balance: '100000000000'
       code: |
         (module
-          (import  "ethereum" "getTxGasPrice"  (func $getTxGasPrice (param i32)))
-          (import  "ethereum" "storageStore"  (func $storageStore (param i32 i32)))
+          (import "ethereum" "getTxGasPrice"  (func $getTxGasPrice (param i32)))
+          (import "ethereum" "storageStore"  (func $storageStore (param i32 i32)))
           (memory 1 )
           (export "memory" (memory 0))
           (export "main" (func $main))
@@ -38,7 +38,7 @@ getTxGasPrice:
         - ALL
       result:
         a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
-          balance: "99999957728"
+          balance: "99999917724"
         deadbeef00000000000000000000000000000000:
           storage: {
             0: "0x2"
