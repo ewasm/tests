@@ -19,7 +19,6 @@ create:
       code: |
         (module
           (import "ethereum" "create" (func $create (param i32 i32 i32 i32) (result i32)))
-          (import "debug" "printMemHex" (func $printMemHex (param i32 i32)))
           (memory 1 )
           (export "memory" (memory 0))
           (export "main" (func $main))
@@ -38,6 +37,10 @@ create:
       network:
         - ALL
       result:
+        # InitialBalance   CREATE   txCost   createMessage 
+        # 100000000000   - 32000  - 21000  - 6869954       = 99993077046
+        a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          balance: '99993077046'
         deadbeef00000000000000000000000000000000:
           storage: {
           }
@@ -46,7 +49,7 @@ create:
     - '0x'
     gasLimit:
     - '0x6acfc0'
-    gasPrice: '0x02'
+    gasPrice: '0x01'
     nonce: '0x04'
     secretKey: "45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8"
     to: 'deadbeef00000000000000000000000000000000'
