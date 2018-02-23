@@ -37,8 +37,12 @@ getTxOrigin:
       network:
         - ALL
       result:
+        # initialBalance ORIGIN   SSTORE  dataCost  txCost
+        # 100000000000   - 2    - 20000   - 136     - 21000 = 99999958862
+        # 1 byte of non zero data costs 68
+        # there are 2 non-zero bytes = 136
         a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
-          balance: "99999957728"
+          balance: "99999958862"
         deadbeef00000000000000000000000000000000:
           storage: {
             0: "0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b"
@@ -48,7 +52,7 @@ getTxOrigin:
     - '0xffff'
     gasLimit:
     - '0x5000001'
-    gasPrice: '0x02'
+    gasPrice: '0x01'
     nonce: '0x00'
     secretKey: "45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8"
     to: 'deadbeef00000000000000000000000000000000'
