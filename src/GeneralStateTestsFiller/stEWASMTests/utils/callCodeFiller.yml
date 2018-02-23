@@ -30,6 +30,7 @@ callCode:
             (i32.store (i32.const 32) (i32.const 0xabcd))
 
             ;; Write to storage
+
             (call $storageStore (i32.const 0) (i32.const 32))
           )
         )
@@ -70,7 +71,7 @@ callCode:
               )
             )
 
-            ;; Make sure the call succeeded (result was 1)
+            ;; Make sure the call succeeded (result was 0)
             ;; Path
             (i32.store (i32.const 128) (i32.const 1))
             ;; Write it to storage, checked in post state expect statement
@@ -92,20 +93,24 @@ callCode:
       network:
         - ALL
       result:
+        # initialBalance CODE   SSTORE(0xabcd)  SSTORE(0x00) txCost
+        # 100000000000 - 700  - 20000          - 5000        - 21000 = 99999953300
+        a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          balance: '99999953300'
         abcdabcdabcdabcdabcdabcdabcdabcdabcdabcd:
           storage: {
             # make sure the storageStore in the first contract's code wrote to
             # the second contract's storage
             0: '0xabcd',
-            # this is the return value of callCode, make sure it's 1 (success)
-            1: '0x01'
+            # this is the return value of callCode, make sure it's 0 (success)
+            1: '0x00'
           }
   transaction:
     data: 
     - ''
     gasLimit:
     - '0x5000001'
-    gasPrice: '0x02'
+    gasPrice: '0x01'
     nonce: '0x00'
     secretKey: 45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8
     to: 'abcdabcdabcdabcdabcdabcdabcdabcdabcdabcd'
