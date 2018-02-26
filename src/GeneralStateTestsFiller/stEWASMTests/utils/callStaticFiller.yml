@@ -63,6 +63,8 @@ callStatic:
       network:
         - ALL
       result:
+        # InitialBalance STATICCALL          gasSent             txCost
+        # 100000000000   - 700      - (200000 - (200000 / 64)) - 21000 = 99999781425
         a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
           balance: '99999781425'
           storage: {}
