@@ -72,6 +72,8 @@ callDelegate:
         - ALL
       result:
         a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          # InitialBalance DELEGATECALL   callGas                    txCost
+          # 100000000000   - 700        - (200000 - (200000 / 64)) - 21000  = 99999781425
           balance: '99999781425'
           code: ''
           nonce: '1'
