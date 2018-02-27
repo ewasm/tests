@@ -37,7 +37,7 @@ selfDestruct:
         - ALL
       result:
         # InitialBalance + destructedBalance - CALLER - SELFDESTRUCT - TXCOST + gasRefund 
-        # 100000000000   + 100000000000      - 2      - 5000         - 21000  + 13000     = 199999997998
+        # 100000000000   + 100000000000      - 2      - 5000         - 21000  + 13001     = 199999986999
         # if refund (24000) is greater than the half of used gas, then it will only
         # refunt half the gas used.
         a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
