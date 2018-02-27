@@ -73,8 +73,10 @@ call:
       network:
         - ALL
       result:
+        # InitialBalance - contract1.call - txCost - contract2.calldatasize - contract2.sstore
+        # 100000000000   - 700            - 21000  - 2                      - 20000            = 99999958298
         a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
-          balance: '99999958154'
+          balance: '99999958298'
         deadbeef00000000000000000000000000000000:
           storage: {
           }
