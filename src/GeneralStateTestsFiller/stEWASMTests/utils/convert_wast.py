@@ -12,15 +12,15 @@ def wat2wasm(code, file_name):
     exit(1)
 
   # Add metering
-  result = subprocess.run(['wasm-metering/bin/wasm-metering', 'tmp.wasm',
-                           'tmp.metered.wasm'], stdout=subprocess.PIPE,
-                          stderr=subprocess.PIPE)
-  if result.returncode != 0:
-    print('Error adding metering to ' + file_name + ':')
-    print(result.stderr.decode('UTF-8'))
-    exit(1)
+  #result = subprocess.run(['wasm-metering/bin/wasm-metering', 'tmp.wasm',
+  #                         'tmp.metered.wasm'], stdout=subprocess.PIPE,
+  #                        stderr=subprocess.PIPE)
+  #if result.returncode != 0:
+  #  print('Error adding metering to ' + file_name + ':')
+  #  print(result.stderr.decode('UTF-8'))
+  #  exit(1)
 
-  with open('tmp.metered.wasm', 'rb') as f:
+  with open('tmp.wasm', 'rb') as f:
     result = f.read()
 
   return result.hex()
