@@ -46,8 +46,8 @@ callDataCopy:
       network:
         - ALL
       result:
-        # initialBalance  CALLDATACOPY SSTORE   txCost   dataCost
-        # 100000000000   - 6           - 20000 - 21000  - 136 = 99999958858
+        # initialBalance  CALLDATACOPY*length    SSTORE  txCost  dataCost
+        # 100000000000   - ( 3 * 2 )           - 20000 - 21000  - 136 = 99999958858
         a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
           balance: '99999958858'
         abcdabcdabcdabcdabcdabcdabcdabcdabcdabcd:
