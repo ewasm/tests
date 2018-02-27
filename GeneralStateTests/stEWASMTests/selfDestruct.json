@@ -2,7 +2,7 @@
     "selfDestruct" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "cpp-1.3.0+commit.c7fc1c3b.Darwin.appleclang",
+            "filledwith" : "cpp-1.3.0+commit.ee0c6776.Darwin.appleclang",
             "lllcversion" : "Version: 0.4.20-develop.2018.1.2+commit.efc198d5.Darwin.appleclang",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/selfDestructFiller.json",
             "sourceHash" : "2eea0a8222466e749c882b4936a5ca5b5a009532092c82fbd2243b638de39db9"

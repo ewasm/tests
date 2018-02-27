@@ -2,7 +2,7 @@
     "getAddressRust" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "cpp-1.3.0+commit.cf6fac08.Darwin.appleclang",
+            "filledwith" : "cpp-1.3.0+commit.ee0c6776.Darwin.appleclang",
             "lllcversion" : "Version: 0.4.20-develop.2018.1.2+commit.efc198d5.Darwin.appleclang",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/getAddressRustFiller.json",
             "sourceHash" : "31aa7c606c0bd679659ca1c4d6fb143c64a55f8e5851b50d233f63fea8a5a3f3"
@@ -18,7 +18,7 @@
         "post" : {
             "Byzantium" : [
                 {
-                    "hash" : "0x145f1881b8a827344cea9a9170bdef5a545ac37bed560e6736f0650e29b5c7ac",
+                    "hash" : "0xbbb6efc16a5ac0a3d0e454b50f121f6612ace52b168e2996baf73f780c7b73e0",
                     "indexes" : {
                         "data" : 0,
                         "gas" : 0,

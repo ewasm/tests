@@ -50,22 +50,22 @@ callNoDataNoValue:
             (call $storageStore (i32.const 200) (i32.const 100))
           )
         )
-  expect:
-    - indexes:
-        data: -1
-        gas: -1
-        value: -1
-      network:
-        - ALL
-      result:
-        deadbeef00000000000000000000000000000000:
-          storage: {
-            0: "0x1"
-          }
-        deadbeef00000000000000000000000000000001:
-          storage: {
-            0: "0x01"
-          }
+  # expect:
+  #   - indexes:
+  #       data: -1
+  #       gas: -1
+  #       value: -1
+  #     network:
+  #       - ALL
+  #     result:
+  #       deadbeef00000000000000000000000000000000:
+  #         storage: {
+  #           0: "0x1"
+  #         }
+  #       deadbeef00000000000000000000000000000001:
+  #         storage: {
+  #           0: "0x01"
+  #         }
   transaction:
     data:
     - '0x'

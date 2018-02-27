@@ -1,11 +1,11 @@
 {
-    "getAddress" : {
+    "getBlockGasLimit" : {
         "_info" : {
             "comment" : "",
             "filledwith" : "cpp-1.3.0+commit.ee0c6776.Darwin.appleclang",
             "lllcversion" : "Version: 0.4.20-develop.2018.1.2+commit.efc198d5.Darwin.appleclang",
-            "source" : "src/GeneralStateTestsFiller/stEWASMTests/getAddressFiller.json",
-            "sourceHash" : "6cbd140374e39082af446bfbccf52db7a9c0364b59dfd5dd4acc228d3feaa14f"
+            "source" : "src/GeneralStateTestsFiller/stEWASMTests/getBlockGasLimitFiller.json",
+            "sourceHash" : "8032be382710de7bed27756d3fd1d04cbd059ddf2daf9eef0012294d92cc80a4"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",
@@ -18,7 +18,7 @@
         "post" : {
             "Byzantium" : [
                 {
-                    "hash" : "0xca34d1d74749c126ee24469185b6158fb496c8930e76b1e64ac426af06884999",
+                    "hash" : "0x6f7b275e68d4359e38c27502b4b4c1f8b61e951ddbe85c95283c46819ce9bef5",
                     "indexes" : {
                         "data" : 0,
                         "gas" : 0,
@@ -36,9 +36,9 @@
                 "storage" : {
                 }
             },
-            "0xb94f5374fce5edbc8e2a8697c15331677e6ebf0b" : {
+            "0xdeadbeef00000000000000000000000000000000" : {
                 "balance" : "0x174876e800",
-                "code" : "0x0061736d01000000010d0360027f7f0060017f00600000022f0208657468657265756d0c73746f7261676553746f7265000008657468657265756d0a676574416464726573730001030201020503010001071102046d61696e0002066d656d6f727902000a18011601027f4120210041002101200010012001200010000b",
+                "code" : "0x0061736d01000000010d036000017e60027f7f0060000002490308657468657265756d10676574426c6f636b4761734c696d6974000008657468657265756d0c73746f7261676553746f726500010564656275670b7072696e744d656d4865780001030201020503010001071102066d656d6f72790200046d61696e00030a1901170041001000370300410041c000100241e400410010010b",
                 "nonce" : "0x00",
                 "storage" : {
                 }
@@ -46,7 +46,7 @@
         },
         "transaction" : {
             "data" : [
-                "0x"
+                "0xffff"
             ],
             "gasLimit" : [
                 "0x5000001"
@@ -54,7 +54,7 @@
             "gasPrice" : "0x01",
             "nonce" : "0x00",
             "secretKey" : "0x45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8",
-            "to" : "0xb94f5374fce5edbc8e2a8697c15331677e6ebf0b",
+            "to" : "0xdeadbeef00000000000000000000000000000000",
             "value" : [
                 "0x00"
             ]

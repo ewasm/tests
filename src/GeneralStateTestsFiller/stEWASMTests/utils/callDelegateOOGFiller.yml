@@ -71,28 +71,28 @@ callDelegateOOG:
 
       nonce: ''
       storage: {}
-  expect:
-    - indexes:
-        data: -1
-        gas: -1
-        value: -1
-      network:
-        - ALL
-      result:
-        a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
-          balance: '99999979000' # considering transaction cost 21000
-          code: ''
-          nonce: '1'
-          storage: {}
-        b100000000000000000000000000000000000001:
-          balance: '100000000000'
-          storage: {
-            0: '0x01'  # Runs Out Of Gas, VM result should be 1
-            }
-        c100000000000000000000000000000000000001:
-          balance: '100000000000'
-          storage: {
-            }
+  # expect:
+  #   - indexes:
+  #       data: -1
+  #       gas: -1
+  #       value: -1
+  #     network:
+  #       - ALL
+  #     result:
+  #       a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+  #         balance: '99999979000' # considering transaction cost 21000
+  #         code: ''
+  #         nonce: '1'
+  #         storage: {}
+  #       b100000000000000000000000000000000000001:
+  #         balance: '100000000000'
+  #         storage: {
+  #          0: '0x01'  # Runs Out Of Gas, VM result should be 1
+  #           }
+  #       c100000000000000000000000000000000000001:
+  #         balance: '100000000000'
+  #         storage: {
+  #           }
   transaction:
     data:
     - ''

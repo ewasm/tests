@@ -20,6 +20,7 @@ revert:
         (module
           (import "ethereum" "revert" (func $revert (param i32 i32)))
           (import "ethereum" "storageStore" (func $storageStore (param i32 i32)))
+          (import "debug"    "printMemHex"   (func $printMemHex (param i32 i32)))
           (memory 1)
           (export "memory" (memory 0))
           (export "main" (func $main))
@@ -43,7 +44,7 @@ revert:
 
             ;; Store some data to return
             (i32.store (i32.const 0) (i32.const 0xabcd))
-
+            (call $printMemHex (i32.const 0) (i32.const 2))
             ;; Revert and return it
             (call $revert
               ;; dataOffset i32ptr the memory offset of the output data (bytes)
@@ -64,6 +65,7 @@ revert:
           (import "ethereum" "storageStore" (func $storageStore (param i32 i32)))
           (import "ethereum" "getReturnDataSize" (func $getReturnDataSize (result i32)))
           (import "ethereum" "returnDataCopy" (func $returnDataCopy (param i32 i32 i32)))
+          (import "debug"    "printMemHex" (func $printMemHex (param i32 i32)))
 
           (memory 1)
           (data (i32.const 0)  "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\ef\be\ad\de")
@@ -117,9 +119,12 @@ revert:
                 (i32.const 0)
               )
             )
+            (call $printMemHex (get_local $memResult) (i32.const 32))
 
             ;; Store return data size to check it (it should be 2)
             (i32.store (get_local $memRetdatasize) (call $getReturnDataSize))
+            (call $printMemHex (get_local $memRetdatasize) (i32.const 32))
+            
             (call $storageStore (get_local $memStoragekey1) (get_local $memRetdatasize))
 
             ;; Trap if it doesn't equal 2, since the following code relies on this invariant
@@ -147,25 +152,25 @@ revert:
         )
       nonce: ''
       storage: {}
-  expect:
-    - indexes:
-        data: -1
-        gas: -1
-        value: -1
-      network:
-        - ALL
-      result:
-        abcdabcdabcdabcdabcdabcdabcdabcdabcdabcd:
-          storage: {
-            # length of return data
-            0: '0x02',
-            # return data (via $returnDataCopy)
-            1: '0xabcd',
-            # result (should be 2 for revert)
-            2: '0x02',
-            # should not be set as change should be reverted
-            3: ''
-          }
+  # expect:
+  #   - indexes:
+  #       data: -1
+  #       gas: -1
+  #       value: -1
+  #     network:
+  #       - ALL
+  #     result:
+  #       abcdabcdabcdabcdabcdabcdabcdabcdabcdabcd:
+  #         storage: {
+  #           # length of return data
+  #           0: '0x02',
+  #           # return data (via $returnDataCopy)
+  #           1: '0xabcd',
+  #           # result (should be 2 for revert)
+  #           2: '0x02',
+  #           # should not be set as change should be reverted
+  #           3: ''
+  #         }
   transaction:
     data: 
     - ''
