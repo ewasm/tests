@@ -5,7 +5,7 @@
             "filledwith" : "cpp-1.3.0+commit.ee0c6776.Darwin.appleclang",
             "lllcversion" : "Version: 0.4.20-develop.2018.1.2+commit.efc198d5.Darwin.appleclang",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/ecAddCallDataCopyFiller.json",
-            "sourceHash" : "30db8b72df52355a4cb673b2f3b0fdfb6a4d71f88499cf79de34004fc77023db"
+            "sourceHash" : "3e86c1eae21091bfb87ff2377c47798dbf473fed367960ee1de3eeb7cd636937"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",
@@ -18,7 +18,7 @@
         "post" : {
             "Byzantium" : [
                 {
-                    "hash" : "0x193a83f0415ed1f8b47c6604e1dd693c7fae3c4d979b280d4d1874c60c7282f9",
+                    "hash" : "0x550dd8a0357f8145192c0d147c030bc4a85ddae96c781bed862fd296421b1b4f",
                     "indexes" : {
                         "data" : 0,
                         "gas" : 0,
@@ -51,7 +51,7 @@
             "gasLimit" : [
                 "0x5000001"
             ],
-            "gasPrice" : "0x02",
+            "gasPrice" : "0x01",
             "nonce" : "0x00",
             "secretKey" : "0x45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8",
             "to" : "0xb94f5374fce5edbc8e2a8697c15331677e6ebf0b",
