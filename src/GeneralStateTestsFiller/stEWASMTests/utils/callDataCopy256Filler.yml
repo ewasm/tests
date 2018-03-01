@@ -31,7 +31,7 @@ callDataCopy256:
               ;; dataOffset i32 the offset in the input data
               (i32.const 0)
               ;; length i32 the length of data to copy
-              (i32.const 256)
+              (i32.const 32)
             )
             (call $storageStore (i32.const 0) (i32.const 32))
           )
@@ -52,7 +52,7 @@ callDataCopy256:
           }
   transaction:
     data: 
-    - '0x1234567890abcdef1a2a3a4a5a6a7a8a9aaa0102030405060708090a0b0c0d0e1234567890abcdef1a2a3a4a5a6a7a8a9aaa0102030405060708090a0b0c0d0e0f101112131415161718191a1b1cbdbebfba1234567890abcdef1a2a3a4a5a6a7a8a9aaa0102030405060708090a0b0c0d0e0f101112131415161718191a1b1cbdbebfba1234567890abcdef1a2a3a4a5a6a7a8a9aaa0102030405060708090a0b0c0d0e0f101112131415161718191a1b1cbdbebfba1234567890abcdef1a2a3a4a5a6a7a8a9aaa0102030405060708090a0b0c0d0e0f101112131415161718191a1b1cbdbebfba1234567890abcdef1a2a3a4a5a6a7a8a9aaa0102030405060708090a0b0c0d0e0f101112131415161718191a1b1cbdbebfba123456789abc'
+    - '0x1234567890abcdef1a2a3a4a5a6a7a8a9aaa0102030405060708090a0b0c0d0e'
     gasLimit:
     - '0x5000001'
     gasPrice: '0x01'
