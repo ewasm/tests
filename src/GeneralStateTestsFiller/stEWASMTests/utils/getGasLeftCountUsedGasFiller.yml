@@ -51,8 +51,8 @@ getGasLeftCountUsedGas:
       network:
         - ALL
       result:
-        # initialBalance - usedGas
-        # 100000000000 - 5221476 = 99999958596
+        # initialBalance - getAddress - getBalance getGasLeft - txCost
+        # 100000000000   - 2            400        - 2        - 21000  = 99999958596
         a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
           balance: '99999958596'
         b94f5374fce5edbc8e2a8697c15331677e6ebf0b:
