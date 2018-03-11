@@ -8,34 +8,6 @@
             "currentTimestamp": "1000",
             "previousHash": "5e20a0453cecd065ea59c37ac63e079ee08998b6045136a8ce6635c7912ec0b6"
         },
-        "expect": [
-            {
-                "indexes": {
-                    "data": -1,
-                    "gas": -1,
-                    "value": -1
-                },
-                "network": [
-                    "ALL"
-                ],
-                "result": {
-                    "a94f5374fce5edbc8e2a8697c15331677e6ebf0b": {
-                        "balance": "99999781425",
-                        "code": "",
-                        "nonce": "1",
-                        "storage": {}
-                    },
-                    "b100000000000000000000000000000000000001": {
-                        "storage": {
-                            "0": "0xb100000000000000000000000000000000000001"
-                        }
-                    },
-                    "c100000000000000000000000000000000000001": {
-                        "storage": {}
-                    }
-                }
-            }
-        ],
         "pre": {
             "a94f5374fce5edbc8e2a8697c15331677e6ebf0b": {
                 "balance": "100000000000",
