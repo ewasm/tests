@@ -2,7 +2,7 @@
     "callStatic" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "cpp-1.3.0+commit.ee0c6776.Darwin.appleclang",
+            "filledwith" : "cpp-1.3.0+commit.76e2e296.Darwin.appleclang",
             "lllcversion" : "Version: 0.4.20-develop.2018.1.2+commit.efc198d5.Darwin.appleclang",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/callStaticFiller.json",
             "sourceHash" : "9a25e3240e43842017b2c2fa6427718130919b4b47806dd4771e93b515e35fa1"
