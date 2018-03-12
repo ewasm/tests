@@ -4,8 +4,8 @@
             "comment" : "",
             "filledwith" : "cpp-1.3.0+commit.76e2e296.Darwin.appleclang",
             "lllcversion" : "Version: 0.4.20-develop.2018.1.2+commit.efc198d5.Darwin.appleclang",
-            "source" : "src/GeneralStateTestsFiller/stEWASMTests/getAddressFiller.json",
-            "sourceHash" : "6cbd140374e39082af446bfbccf52db7a9c0364b59dfd5dd4acc228d3feaa14f"
+            "source" : "src/GeneralStateTestsFiller/stEWASMTests/getAddressFiller.yml",
+            "sourceHash" : "7fc38da51c58492d438689ee7a448257b73042644e842289b797acfe44aefbf9"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",
@@ -18,7 +18,7 @@
         "post" : {
             "Byzantium" : [
                 {
-                    "hash" : "0xca34d1d74749c126ee24469185b6158fb496c8930e76b1e64ac426af06884999",
+                    "hash" : "0x5b2fe2733e944d4b5794e438f18336cdae958989ec816d06cf2111ecc910cc5b",
                     "indexes" : {
                         "data" : 0,
                         "gas" : 0,
@@ -38,7 +38,7 @@
             },
             "0xb94f5374fce5edbc8e2a8697c15331677e6ebf0b" : {
                 "balance" : "0x174876e800",
-                "code" : "0x0061736d01000000010d0360027f7f0060017f00600000022f0208657468657265756d0c73746f7261676553746f7265000008657468657265756d0a676574416464726573730001030201020503010001071102046d61696e0002066d656d6f727902000a18011601027f4120210041002101200010012001200010000b",
+                "code" : "0x0061736d01000000010d0360027f7f0060017f00600000022f0208657468657265756d0c73746f7261676553746f7265000008657468657265756d0a676574416464726573730001030201020503010001071102046d61696e0002066d656d6f727902000a18011601027f4120210041002101200010012001200010000b0028046e616d65012103000c73746f7261676553746f7265010a6765744164647265737302046d61696e",
                 "nonce" : "0x00",
                 "storage" : {
                 }

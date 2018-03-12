@@ -4,8 +4,8 @@
             "comment" : "",
             "filledwith" : "cpp-1.3.0+commit.76e2e296.Darwin.appleclang",
             "lllcversion" : "Version: 0.4.20-develop.2018.1.2+commit.efc198d5.Darwin.appleclang",
-            "source" : "src/GeneralStateTestsFiller/stEWASMTests/getGasLeftConsumeAllGasFiller.json",
-            "sourceHash" : "67cb67dea7b39f94356045fbf1d88d36b46067441ae997c4725d7a7f04a48902"
+            "source" : "src/GeneralStateTestsFiller/stEWASMTests/getGasLeftConsumeAllGasFiller.yml",
+            "sourceHash" : "e1600231202bd9bda873243951470e47aed53d4b09ec0917f2158146847e49bd"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",
@@ -18,7 +18,7 @@
         "post" : {
             "Byzantium" : [
                 {
-                    "hash" : "0x591753c8f283440e9803d4f0439452911c27acd8a527226e8430efff6e73381d",
+                    "hash" : "0xf5f15213e9e21a0259dd7c4fd97bfa52580898612f844e8842064988e834a662",
                     "indexes" : {
                         "data" : 0,
                         "gas" : 0,
@@ -38,7 +38,7 @@
             },
             "0xb94f5374fce5edbc8e2a8697c15331677e6ebf0b" : {
                 "balance" : "0x174876e800",
-                "code" : "0x0061736d0100000001110460027f7f006000017e60017e0060000002410308657468657265756d0c73746f7261676553746f7265000008657468657265756d0a6765744761734c656674000108657468657265756d067573654761730002030201030503010001071102046d61696e0003066d656d6f727902000a18011600428080c0021002412010013703004100412010000b",
+                "code" : "0x0061736d0100000001110460027f7f006000017e60017e0060000002410308657468657265756d0c73746f7261676553746f7265000008657468657265756d0a6765744761734c656674000108657468657265756d067573654761730002030201030503010001071102046d61696e0003066d656d6f727902000a18011600428080c0021002412010013703004100412010000b0030046e616d65012904000c73746f7261676553746f7265010a6765744761734c656674020675736547617303046d61696e",
                 "nonce" : "0x00",
                 "storage" : {
                 }

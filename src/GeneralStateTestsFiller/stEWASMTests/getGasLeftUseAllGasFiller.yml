@@ -32,9 +32,9 @@ getGasLeftUseAllGas:
       storage: {}
   expect:
     - indexes:
-        data: -1
-        gas: -1
-        value: -1
+        data: !!int -1
+        gas: !!int -1
+        value: !!int -1
       network:
         - ALL
       result:

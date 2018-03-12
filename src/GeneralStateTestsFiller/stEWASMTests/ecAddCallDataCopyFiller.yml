@@ -34,6 +34,7 @@ ecAddCallDataCopy:
         (type $t13 (func (param i32 i32 i32 i32) (result i32)))
         (import "ethereum" "callDataCopy" (func $env.callDataCopy (type $t4)))
         (import "ethereum" "storageStore" (func $env.storageStore (type $t5)))
+        (table $T0 75 75 anyfunc)        
         (func $f2 (type $t5) (param $p0 i32) (param $p1 i32)
         (local $l0 i32) (local $l1 i32) (local $l2 i32) (local $l3 i32) (local $l4 i32) (local $l5 i32) (local $l6 i32) (local $l7 i32) (local $l8 i32) (local $l9 i32) (local $l10 i32) (local $l11 i64) (local $l12 i64) (local $l13 i64) (local $l14 i64) (local $l15 i64) (local $l16 i64) (local $l17 i64) (local $l18 i64) (local $l19 i64) (local $l20 i64) (local $l21 i64)
         (i32.store offset=4
@@ -27115,7 +27116,7 @@ ecAddCallDataCopy:
         (unreachable))
         (func $f133 (type $t6)
         (unreachable))
-        (table $T0 75 75 anyfunc)
+
         (memory $memory (export "memory") 17)
         (elem (i32.const 0) $f133 $f124 $f61 $f125 $f68 $f95 $f106 $f86 $f99 $f107 $f93 $f105 $f116 $f92 $f6 $f131 $f41 $f15 $f67 $f62 $f64 $f43 $f24 $f66 $f63 $f65 $f26 $f27 $f38 $f94 $f36 $f37 $f35 $f34 $f28 $f29 $f32 $f33 $f30 $f31 $f39 $f72 $f70 $f71 $f73 $f77 $f56 $f57 $f49 $f50 $f51 $f52 $f53 $f44 $f42 $f60 $f12 $f76 $f25 $f22 $f23 $f78 $f16 $f84 $f89 $f87 $f88 $f101 $f110 $f113 $f114 $f115 $f96 $f97 $f98)
         (data (i32.const 4) "p\1b\10\00")
@@ -27329,9 +27330,9 @@ ecAddCallDataCopy:
       storage: {}
   expect:
     - indexes:
-        data: -1
-        gas: -1
-        value: -1
+        data: !!int -1
+        gas: !!int -1
+        value: !!int -1
       network:
         - ALL
       result:

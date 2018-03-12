@@ -4,8 +4,8 @@
             "comment" : "",
             "filledwith" : "cpp-1.3.0+commit.76e2e296.Darwin.appleclang",
             "lllcversion" : "Version: 0.4.20-develop.2018.1.2+commit.efc198d5.Darwin.appleclang",
-            "source" : "src/GeneralStateTestsFiller/stEWASMTests/getBalanceFiller.json",
-            "sourceHash" : "f2c820c4c46a18e2ca3338b642f4dea25932ea127c36ecad66f991835a791d63"
+            "source" : "src/GeneralStateTestsFiller/stEWASMTests/getBalanceFiller.yml",
+            "sourceHash" : "a7dbea0a2aa5c651e71ed20b1d5025162d9110c2bf5d510981d33d90d2bafa9a"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",
@@ -18,7 +18,7 @@
         "post" : {
             "Byzantium" : [
                 {
-                    "hash" : "0xf08a614826548561aebcab831ca45a24759416fc6e8de8382ac2bf2f1cf2f867",
+                    "hash" : "0x78bf430e4c56220dd6d2db2c87c5ed2fad634c727ea248d70d92a30158540c9c",
                     "indexes" : {
                         "data" : 0,
                         "gas" : 0,
@@ -38,7 +38,7 @@
             },
             "0xdeadbeef00000000000000000000000000000000" : {
                 "balance" : "0x174876e800",
-                "code" : "0x0061736d01000000010d0360027f7f0060017f0060000002450308657468657265756d0a67657442616c616e6365000008657468657265756d0c73746f7261676553746f7265000008657468657265756d0a676574416464726573730001030201020503010001071102066d656d6f72790200046d61696e00030a1701150041001002410041e400100041c80141e40010010b",
+                "code" : "0x0061736d01000000010d0360027f7f0060017f0060000002450308657468657265756d0a67657442616c616e6365000008657468657265756d0c73746f7261676553746f7265000008657468657265756d0a676574416464726573730001030201020503010001071102066d656d6f72790200046d61696e00030a1701150041001002410041e400100041c80141e40010010b0034046e616d65012d04000a67657442616c616e6365010c73746f7261676553746f7265020a6765744164647265737303046d61696e",
                 "nonce" : "0x00",
                 "storage" : {
                 }

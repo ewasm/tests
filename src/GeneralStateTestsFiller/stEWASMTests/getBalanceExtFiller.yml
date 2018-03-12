@@ -1,3 +1,4 @@
+# get Balance of another account
 getBalanceExt:
   env:
     currentCoinbase: 2adc25665018aa1fe0e6bc666dac8fc2697ff9ba
@@ -20,7 +21,6 @@ getBalanceExt:
     deadbeef00000000000000000000000000000001:
       balance: '100000000000'
       code: |
-        ;; get balance of another account
         (module
           (import  "ethereum" "getBalance"  (func $getBalance (param i32 i32)))
           (import "ethereum" "storageStore" (func $storageStore (param i32 i32)))
@@ -38,9 +38,9 @@ getBalanceExt:
       storage: {}
   expect:
     - indexes:
-        data: -1
-        gas: -1
-        value: -1
+        data: !!int -1
+        gas: !!int -1
+        value: !!int -1
       network:
         - ALL
       result:

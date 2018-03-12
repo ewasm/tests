@@ -4,8 +4,8 @@
             "comment" : "",
             "filledwith" : "cpp-1.3.0+commit.76e2e296.Darwin.appleclang",
             "lllcversion" : "Version: 0.4.20-develop.2018.1.2+commit.efc198d5.Darwin.appleclang",
-            "source" : "src/GeneralStateTestsFiller/stEWASMTests/getBlockNumberFiller.json",
-            "sourceHash" : "49f33742196dd0885e40f597441b019f28c407fb751cd353a613bcea0efa9fc4"
+            "source" : "src/GeneralStateTestsFiller/stEWASMTests/getBlockNumberFiller.yml",
+            "sourceHash" : "b01e45f1aaf0cf1fe9160fa7ce3b10fb849d87c43c88eb098633de9d47a59c80"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",
@@ -18,7 +18,7 @@
         "post" : {
             "Byzantium" : [
                 {
-                    "hash" : "0xce5adcdd2fb86fb22287807be585ce6a175b03cab4aac87a9d5c675b774e6165",
+                    "hash" : "0xdb4afa3bad5e8331c44efd7edaa0f11dd64ed602511443ea2d22af2fabfb7201",
                     "indexes" : {
                         "data" : 0,
                         "gas" : 0,
@@ -38,7 +38,7 @@
             },
             "0xb94f5374fce5edbc8e2a8697c15331677e6ebf0b" : {
                 "balance" : "0x174876e800",
-                "code" : "0x0061736d01000000010d0360027f7f006000017e60000002330208657468657265756d0c73746f7261676553746f7265000008657468657265756d0e676574426c6f636b4e756d6265720001030201020503010001071102046d61696e0002066d656d6f727902000a11010f00412010013703004100412010000b",
+                "code" : "0x0061736d01000000010d0360027f7f006000017e60000002330208657468657265756d0c73746f7261676553746f7265000008657468657265756d0e676574426c6f636b4e756d6265720001030201020503010001071102046d61696e0002066d656d6f727902000a11010f00412010013703004100412010000b002c046e616d65012503000c73746f7261676553746f7265010e676574426c6f636b4e756d62657202046d61696e",
                 "nonce" : "0x00",
                 "storage" : {
                 }

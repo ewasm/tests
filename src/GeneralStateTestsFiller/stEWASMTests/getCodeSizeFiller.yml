@@ -30,9 +30,9 @@ getCodeSize:
       storage: {}
   expect:
     - indexes:
-        data: -1
-        gas: -1
-        value: -1
+        data: !!int -1
+        gas: !!int -1
+        value: !!int -1
       network:
         - ALL
       result:
@@ -46,7 +46,7 @@ getCodeSize:
           balance: '99999958998'
         b94f5374fce5edbc8e2a8697c15331677e6ebf0b:
           storage: {
-            0: '0x78' # expects 120 bytes of code
+            0: '0xa3' # expects 163 bytes of code
           }
   transaction:
     data:

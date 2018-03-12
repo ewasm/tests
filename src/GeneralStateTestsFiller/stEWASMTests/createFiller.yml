@@ -24,16 +24,16 @@ create:
           (export "main" (func $main))
 
           (func $main
+            (i32.store (i32.const 32) ;; store result value
             ;;            value offset  data offset    length        result offset
-            (call $create (i32.const 0) (i32.const 16) (i32.const 0) (i32.const 0))
-            drop
+              (call $create (i32.const 0) (i32.const 16) (i32.const 0) (i32.const 0)))
           )
         )
   expect:
     - indexes:
-        data: -1
-        gas: -1
-        value: -1
+        data: !!int -1
+        gas: !!int -1
+        value: !!int -1
       network:
         - ALL
       result:

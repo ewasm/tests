@@ -52,9 +52,9 @@ getExternalCodeSize:
       storage: {}
   expect:
     - indexes:
-        data: -1
-        gas: -1
-        value: -1
+        data: !!int -1
+        gas: !!int -1
+        value: !!int -1
       network:
         - ALL
       result:
@@ -65,7 +65,7 @@ getExternalCodeSize:
         abcdabcdabcdabcdabcdabcdabcdabcdabcdabcd:
           storage: {
             # the length of the code specified above in pre for the second address
-            0: '0xdb',
+            0: '0x11a',
             # the length of the code for the 'deadbeef' account
             1: '0x08'
           }

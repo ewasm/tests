@@ -4,8 +4,8 @@
             "comment" : "",
             "filledwith" : "cpp-1.3.0+commit.76e2e296.Darwin.appleclang",
             "lllcversion" : "Version: 0.4.20-develop.2018.1.2+commit.efc198d5.Darwin.appleclang",
-            "source" : "src/GeneralStateTestsFiller/stEWASMTests/getBlockGasLimitFiller.json",
-            "sourceHash" : "8032be382710de7bed27756d3fd1d04cbd059ddf2daf9eef0012294d92cc80a4"
+            "source" : "src/GeneralStateTestsFiller/stEWASMTests/getBlockGasLimitFiller.yml",
+            "sourceHash" : "5ac379a4b9cc0d6e545ab3fd1506c7ad12d00b9cf961d1973fc2d011ba154ebd"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",
@@ -18,7 +18,7 @@
         "post" : {
             "Byzantium" : [
                 {
-                    "hash" : "0x6f7b275e68d4359e38c27502b4b4c1f8b61e951ddbe85c95283c46819ce9bef5",
+                    "hash" : "0xb968aa3c8e518d89a5e4d36413c63fe822f8e72db8332572f6d521fdf976278a",
                     "indexes" : {
                         "data" : 0,
                         "gas" : 0,
@@ -38,7 +38,7 @@
             },
             "0xdeadbeef00000000000000000000000000000000" : {
                 "balance" : "0x174876e800",
-                "code" : "0x0061736d01000000010d036000017e60027f7f0060000002490308657468657265756d10676574426c6f636b4761734c696d6974000008657468657265756d0c73746f7261676553746f726500010564656275670b7072696e744d656d4865780001030201020503010001071102066d656d6f72790200046d61696e00030a1901170041001000370300410041c000100241e400410010010b",
+                "code" : "0x0061736d01000000010d036000017e60027f7f0060000002490308657468657265756d10676574426c6f636b4761734c696d6974000008657468657265756d0c73746f7261676553746f726500010564656275670b7072696e744d656d4865780001030201020503010001071102066d656d6f72790200046d61696e00030a1901170041001000370300410041c000100241e400410010010b003b046e616d650134040010676574426c6f636b4761734c696d6974010c73746f7261676553746f7265020b7072696e744d656d48657803046d61696e",
                 "nonce" : "0x00",
                 "storage" : {
                 }
