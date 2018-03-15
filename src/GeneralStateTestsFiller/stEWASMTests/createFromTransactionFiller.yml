@@ -1,3 +1,5 @@
+# creates a minimal ewasm contract (module)
+---
 createFromTransaction:
   env:
     currentCoinbase: 2adc25665018aa1fe0e6bc666dac8fc2697ff9ba
@@ -13,39 +15,59 @@ createFromTransaction:
       code: ''
       nonce: ''
       storage: {}
-  # expect:
-  #   - indexes:
-  #       data: -1
-  #       gas: -1
-  #       value: -1
-  #     network:
-  #       - ALL
-  #     result:
-  #       # newly-created contract
-  #       6295ee1b4f6dd65047762f924ecd367c17eabf8f:
-  #         code: '0x01'
+  expect:
+    - indexes:
+        data: !!int -1
+        gas: !!int -1
+        value: !!int -1
+      network:
+        - ALL
+      result:
+        # # initialBalance - createGas - dataCost
+        # # 100000000000   - 53000     - 6752
+        # a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+        #   balance: '99999940312'
+        # newly-created contract
+        6295ee1b4f6dd65047762f924ecd367c17eabf8f:
+          code: '0x0061736d01000000'
   transaction:
-    data: 
+    data:
     - |
-        (module
-          (import "ethereum" "return" (func $return (param i32 i32)))
-          (memory 1)
-          (export "main" (func $main))
-          (func $main
-            ;; Store some data to return
-            (i32.store8 (i32.const 0) (i32.const 1))
-            ;; Return it
-            (call $return 
-              ;; dataOffset i32ptr the memory offset of the output data (bytes)
-              (i32.const 0)
-              ;; length i32 the length of the output data
-              (i32.const 1)
-            )
-          )
+      (module
+        (import "ethereum" "return" (func $return (param i32 i32)))
+        (memory 100)
+        (data (i32.const 0)  "\00\61\73\6d\01\00\00\00")
+        (export "memory" (memory 0))
+        (export "main" (func $main))
+        (func $main
+          (call $return
+            (i32.const 0)
+            (i32.const 8))
         )
+      )
+# bytecode (length=120):
+# zero-bytes: 23 * 4  = 92
+# non-zero:   97 * 68 = 6596
+#                     = 6688
+# 01 02 03 04 05 06 07 08 09 10
+#-------------------------------|     | ZB | NZ
+# 00 61 73 6d 01 00 00 00 01 09 | 10     4    6
+# 02 60 02 7f 7f 00 60 00 00 02 | 20     3    7
+# 13 01 08 65 74 68 65 72 65 75 | 30     0   10
+# 6d 06 72 65 74 75 72 6e 00 00 | 40     2    8
+# 03 02 01 01 05 03 01 00 64 07 | 50     1    9
+# 11 02 06 6d 65 6d 6f 72 79 02 | 60     0   10
+# 00 04 6d 61 69 6e 00 01 0a 0a | 70     2    8
+# 01 08 00 41 00 41 08 10 00 0b | 80     3    7
+# 0b 0e 01 00 41 00 0b 08 00 61 | 90     3    7
+# 73 6d 01 00 00 00 00 16 04 6e | 100    4    6
+# 61 6d 65 01 0f 02 00 06 72 65 | 110    1    9
+# 74 75 72 6e 01 04 6d 61 69 6e | 120    0   10
+# ---------------------------------------------
+#                                        23  97
     gasLimit:
     - '0x5000001'
-    gasPrice: '0x02'
+    gasPrice: '0x01'
     nonce: '0x00'
     secretKey: 45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8
     to: ''

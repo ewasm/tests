@@ -63,29 +63,29 @@ callDelegate:
 
       nonce: ''
       storage: {}
-  # expect:
-  #   - indexes:
-  #       data: -1
-  #       gas: -1
-  #       value: -1
-  #     network:
-  #       - ALL
-  #     result:
-  #       a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
-  #         # InitialBalance DELEGATECALL   callGas                    txCost
-  #         # 100000000000   - 700        - (200000 - (200000 / 64)) - 21000  = 99999781425
-  #         balance: '99999781425'
-  #         code: ''
-  #         nonce: '1'
-  #         storage: {}
-  #       # The storage of the caller is modified by contract c1...01
-  #       b100000000000000000000000000000000000001:
-  #         storage: {
-  #           0: '0xb100000000000000000000000000000000000001'
-  #           }
-  #       c100000000000000000000000000000000000001:
-  #         storage: {
-  #           }
+  expect:
+    - indexes:
+        data: !!int -1
+        gas: !!int -1
+        value: !!int -1
+      network:
+        - ALL
+      result:
+        a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          # InitialBalance DELEGATECALL ADDRESS SSTORE RETURN txCost
+          # 100000000000   - 700      - 2     - 20000 - 0    - 21000   = 99999958298
+          balance: '99999958298'
+          code: ''
+          nonce: '1'
+          storage: {}
+        # The storage of the caller is modified by contract c1...01
+        b100000000000000000000000000000000000001:
+          storage: {
+            0: '0xb100000000000000000000000000000000000001'
+            }
+        c100000000000000000000000000000000000001:
+          storage: {
+            }
   transaction:
     data:
     - ''

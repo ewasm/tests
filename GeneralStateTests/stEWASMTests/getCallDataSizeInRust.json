@@ -2,10 +2,10 @@
     "getCallDataSizeInRust" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "cpp-1.3.0+commit.76e2e296.Darwin.appleclang",
+            "filledwith" : "cpp-1.3.0+commit.883607f8.Darwin.appleclang",
             "lllcversion" : "Version: 0.4.20-develop.2018.1.2+commit.efc198d5.Darwin.appleclang",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/getCallDataSizeInRustFiller.yml",
-            "sourceHash" : "eff2cfe17442359f6c96717359ade4d89b8f1a4428e133ba3ed39a2ee9f6ad17"
+            "sourceHash" : "61106b0bce5bd9a1b54eb9e8fb1d4a431e581d1cd1f62749d92f9449ad10dfd5"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",
@@ -18,7 +18,7 @@
         "post" : {
             "Byzantium" : [
                 {
-                    "hash" : "0x5da55ba7d079d4af91597f2fce045a770e2179489901d44764d8392ad783b47a",
+                    "hash" : "0x4b40c2c7504b4012fef583954dc0946e850ea42c3f1a9107686f59448805c779",
                     "indexes" : {
                         "data" : 0,
                         "gas" : 0,
@@ -44,7 +44,7 @@
             "gasLimit" : [
                 "0x5000001"
             ],
-            "gasPrice" : "0x02",
+            "gasPrice" : "0x01",
             "nonce" : "0x00",
             "secretKey" : "0x45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8",
             "to" : "0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b",

@@ -2,10 +2,10 @@
     "createFromTransaction" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "cpp-1.3.0+commit.76e2e296.Darwin.appleclang",
+            "filledwith" : "cpp-1.3.0+commit.883607f8.Darwin.appleclang",
             "lllcversion" : "Version: 0.4.20-develop.2018.1.2+commit.efc198d5.Darwin.appleclang",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/createFromTransactionFiller.yml",
-            "sourceHash" : "9f43d8c30f0df44ae448f5a5f2e2d7bcd63d113ee92aeee6c81dbcade0891f73"
+            "sourceHash" : "2fd271ccffe25097d09a8f14a0edc9bda7d9a7401f5dd1e74d001d97af452a9b"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",
@@ -18,7 +18,7 @@
         "post" : {
             "Byzantium" : [
                 {
-                    "hash" : "0xef9bca7bfed8b24c0f338807f4c8023bad88754225f180a80f0a7b9daef517b3",
+                    "hash" : "0xfd16ea59ba33bed785878168ab30c31b95ff383ae80fdff76077d912cf20f926",
                     "indexes" : {
                         "data" : 0,
                         "gas" : 0,
@@ -39,12 +39,12 @@
         },
         "transaction" : {
             "data" : [
-                "0x0061736d0100000001090260027f7f0060000002130108657468657265756d0672657475726e0000030201010503010001070801046d61696e00010a11010f00410041013a00004100410110000b0016046e616d65010f02000672657475726e01046d61696e"
+                "0x0061736d0100000001090260027f7f0060000002130108657468657265756d0672657475726e0000030201010503010064071102066d656d6f72790200046d61696e00010a0a0108004100410810000b0b0e010041000b080061736d010000000016046e616d65010f02000672657475726e01046d61696e"
             ],
             "gasLimit" : [
                 "0x5000001"
             ],
-            "gasPrice" : "0x02",
+            "gasPrice" : "0x01",
             "nonce" : "0x00",
             "secretKey" : "0x45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8",
             "to" : "",

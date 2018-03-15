@@ -2,10 +2,10 @@
     "rustStorageStore" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "cpp-1.3.0+commit.76e2e296.Darwin.appleclang",
+            "filledwith" : "cpp-1.3.0+commit.883607f8.Darwin.appleclang",
             "lllcversion" : "Version: 0.4.20-develop.2018.1.2+commit.efc198d5.Darwin.appleclang",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/rustStorageStoreFiller.yml",
-            "sourceHash" : "7abd865b98c9e846f6c8bc6238d926b5e103c2490ce2b1d2f0cc6716df4e90c6"
+            "sourceHash" : "3c1d594e365fd0ecda13dcf2668b2765a592cd6f47b4f1e90f772f57d7ae325c"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",
@@ -18,7 +18,7 @@
         "post" : {
             "Byzantium" : [
                 {
-                    "hash" : "0x77e5ee6a2612ec13b5ea2bd614fd4a30d9f22a324fcc39af64c3361c220ca725",
+                    "hash" : "0x3b8138a420e3da092447b4f93c29a71a6eed65eaded23061320cf3820e705e2d",
                     "indexes" : {
                         "data" : 0,
                         "gas" : 0,
@@ -51,7 +51,7 @@
             "gasLimit" : [
                 "0x5000001"
             ],
-            "gasPrice" : "0x02",
+            "gasPrice" : "0x01",
             "nonce" : "0x00",
             "secretKey" : "0x45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8",
             "to" : "0xb94f5374fce5edbc8e2a8697c15331677e6ebf0b",

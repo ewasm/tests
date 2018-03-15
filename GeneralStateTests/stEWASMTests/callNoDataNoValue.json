@@ -2,10 +2,10 @@
     "callNoDataNoValue" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "cpp-1.3.0+commit.76e2e296.Darwin.appleclang",
+            "filledwith" : "cpp-1.3.0+commit.883607f8.Darwin.appleclang",
             "lllcversion" : "Version: 0.4.20-develop.2018.1.2+commit.efc198d5.Darwin.appleclang",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/callNoDataNoValueFiller.yml",
-            "sourceHash" : "88b50c9dc789eafef5e9a7d4bab89ab2b5404578e3020aa6d78331244b7740fd"
+            "sourceHash" : "1bec77f7a64722a608ef12aa79d7da072aed4e7cba0aff85f670f26390272fdb"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",
@@ -18,7 +18,7 @@
         "post" : {
             "Byzantium" : [
                 {
-                    "hash" : "0xcff02b6e4db2b5bf02f4d3b4ddf42aaa45d06e8d516c88f385c0011aeeac7320",
+                    "hash" : "0x6ec768dec17b0f6388230f0efafdcf34228d00c4959656862adefe443a2f151a",
                     "indexes" : {
                         "data" : 0,
                         "gas" : 0,
@@ -38,7 +38,7 @@
             },
             "0xdeadbeef00000000000000000000000000000000" : {
                 "balance" : "0x174876e800",
-                "code" : "0x0061736d0100000001140360077e7f7f7f7f7f7f017f60027f7f0060000002290208657468657265756d0463616c6c000008657468657265756d0c73746f7261676553746f72650001030201020503010001071102066d656d6f72790200046d61696e00020a2c012a0041c80141ac02100141e40042c09a0c410041004100410041004100100036020041c80141e40010010b0b1b010041ac020b14f1ffffffffffffffffffffffffffffffffffffff0022046e616d65011b03000463616c6c010c73746f7261676553746f726502046d61696e",
+                "code" : "0x0061736d0100000001140360077e7f7f7f7f7f7f017f60027f7f0060000002290208657468657265756d0463616c6c000008657468657265756d0c73746f7261676553746f72650001030201020503010001071102066d656d6f72790200046d61696e00020a2d012b0041c80141ac02100141e40042c09a0c41c00241004100410041004100100036020041c80141e40010010b0b35020041ac020b14f1ffffffffffffffffffffffffffffffffffffff0041c0020b1401000000000000000000000000000000efbeadde0022046e616d65011b03000463616c6c010c73746f7261676553746f726502046d61696e",
                 "nonce" : "0x00",
                 "storage" : {
                 }
@@ -58,7 +58,7 @@
             "gasLimit" : [
                 "0x6acfc0"
             ],
-            "gasPrice" : "0x02",
+            "gasPrice" : "0x01",
             "nonce" : "0x04",
             "secretKey" : "0x45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8",
             "to" : "0xdeadbeef00000000000000000000000000000000",

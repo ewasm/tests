@@ -44,6 +44,10 @@ getBalanceExt:
       network:
         - ALL
       result:
+        # InitialBalance - BALANCE - SSTORE - TXCOST
+        # 100000000000   - 400     - 20000  - 21000  = 99999958600
+        a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          balance: '99999958600'    
         deadbeef00000000000000000000000000000000:
           storage: {}
         deadbeef00000000000000000000000000000001:
@@ -55,7 +59,7 @@ getBalanceExt:
     - '0x'
     gasLimit:
     - '0x6acfc0'
-    gasPrice: '0x02'
+    gasPrice: '0x01'
     nonce: '0x00'
     secretKey: "45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8"
     to: 'deadbeef00000000000000000000000000000001'
