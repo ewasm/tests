@@ -38,9 +38,9 @@ create:
         - ALL
       result:
         # InitialBalance   CREATE   txCost   createMessage 
-        # 100000000000   - 32000  - 21000  - 6869954       = 99993077046
+        # 100000000000   - 32000  - 21000  - 6838454       = 99999947000
         a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
-          balance: '99993077046'
+          balance: '99999947000'
         deadbeef00000000000000000000000000000000:
           storage: {
           }
