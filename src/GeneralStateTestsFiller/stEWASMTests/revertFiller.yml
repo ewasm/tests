@@ -43,6 +43,7 @@ revert:
 
             ;; Store some data to return
             (i32.store (i32.const 0) (i32.const 0xabcd))
+
             ;; Revert and return it
             (call $revert
               ;; dataOffset i32ptr the memory offset of the output data (bytes)
@@ -162,9 +163,10 @@ revert:
             1: '0xabcd',
             # result (should be 2 for revert)
             2: '0x02',
-            # should not be set as change should be reverted
-            3: ''
           }
+        deadbeef00000000000000000000000000000000:
+          # Make sure storage write in called contract was reverted
+          storage: {}
   transaction:
     data: 
     - ''
