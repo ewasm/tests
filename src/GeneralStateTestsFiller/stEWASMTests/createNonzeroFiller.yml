@@ -147,7 +147,7 @@ createNonzero:
           # NOTE: endianness is reversed here, this is expected
           code: '0xcdab'
           storage: {
-            # Expect created contract to store its call data
+            # Expect created contract to store its call value
             # $memPointerStorageKey3 = 2
             2: '0x1234',
           }
