@@ -5,7 +5,7 @@
             "filledwith" : "testeth 1.4.0.dev0-67+commit.70d52b8f",
             "lllcversion" : "Version: 0.4.20-develop.2018.1.14+commit.0c20b6da.Darwin.appleclang",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/createNonzeroFiller.yml",
-            "sourceHash" : "5d45ed395279ddd3dcceac1073fa8581176871376f7710701ae1c8bff1d76b24"
+            "sourceHash" : "72c4482c2efd06c3680404b77c4b008fd5458ce0dab747e6a29245f169d79e78"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",
