@@ -1,4 +1,4 @@
-createCode:
+createCodeValue:
   env:
     currentCoinbase: 2adc25665018aa1fe0e6bc666dac8fc2697ff9ba
     currentDifficulty: '0x020000'
@@ -80,8 +80,8 @@ createCode:
             ;; initialize
             (i32.store (get_local $memPointerStorageKey1) (i32.const 0))
             (i32.store (get_local $memPointerStorageKey2) (i32.const 1))
-            ;; call create with value transfer 0
-            (i32.store (get_local $memPointerCreateValue) (i32.const 0))
+            ;; call create with value transfer 0x1234
+            (i32.store (get_local $memPointerCreateValue) (i32.const 0x1234))
 
             ;; call CREATE and store the return success/failure value
             (call $storageStore
@@ -126,6 +126,8 @@ createCode:
           }
         # Newly-created contract
         0xf2048c36a5536fea3bc71d49ed59f2c65c546eea:
+          # Value received from CREATE call
+          balance: '0x1234'
           code: '0xbeef'
           storage: {
           }
