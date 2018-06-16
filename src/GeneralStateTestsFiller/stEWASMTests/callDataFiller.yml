@@ -1,0 +1,175 @@
+# Test for CALL with data
+callData:
+  env:
+    currentCoinbase: 2adc25665018aa1fe0e6bc666dac8fc2697ff9ba
+    currentDifficulty: '0x020000'
+    currentGasLimit: '89128960'
+    currentNumber: '1'
+    currentTimestamp: '1000'
+    previousHash: 5e20a0453cecd065ea59c37ac63e079ee08998b6045136a8ce6635c7912ec0b6
+  pre:
+    a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+      balance: '100000000000'
+      code: ''
+      nonce: '0x4'
+      storage: {}
+    deadbeef00000000000000000000000000000001:
+      balance: '100000000000'
+      nonce: ''
+      storage: {}
+      code: |
+        (module
+          (import "ethereum" "getCallDataSize" (func $getCallDataSize (result i32)))
+          (import "ethereum" "callDataCopy" (func $callDataCopy (param i32 i32 i32)))
+          (import "ethereum" "storageStore" (func $storageStore (param i32 i32)))
+          (memory 1)
+
+          (export "memory" (memory 0))
+          (export "main" (func $main))
+
+          (func $main
+            ;; locals
+            (local $memStart i32)
+            (local $callDataSize i32)
+            (local $ptrStorageKey10 i32)
+            (local $ptrStorageKey11 i32)
+            (local $ptrCallData i32)
+            (local $ptrCallDataSize i32)
+
+            ;; init
+            (set_local $memStart (i32.const 128))
+
+            ;; init pointers
+            (set_local $ptrStorageKey10 (get_local $memStart))
+            (set_local $ptrStorageKey11 (i32.add (get_local $memStart) (i32.const 32)))
+            (set_local $ptrCallData (i32.add (get_local $memStart) (i32.const 64)))
+            (set_local $ptrCallDataSize (i32.add (get_local $memStart) (i32.const 96)))
+
+            ;; init mem
+            (i32.store (get_local $ptrStorageKey10) (i32.const 10))
+            (i32.store (get_local $ptrStorageKey11) (i32.const 11))
+
+            ;; get call data size
+            (set_local $callDataSize (call $getCallDataSize))
+
+            ;; write it to mem (so we can store it)
+            (i32.store (get_local $ptrCallDataSize) (get_local $callDataSize))
+
+            ;; store it
+            (call $storageStore
+              (get_local $ptrStorageKey10)
+              (get_local $ptrCallDataSize)
+            )
+
+            ;; get call data
+            (call $callDataCopy
+              ;; result offset
+              (get_local $ptrCallData)
+              ;; data offset
+              (i32.const 0)
+              ;; length
+              (get_local $callDataSize)
+            )
+
+            ;; store call data
+            (call $storageStore
+              (get_local $ptrStorageKey11)
+              (get_local $ptrCallData)
+            )
+          )
+        )
+    deadbeef00000000000000000000000000000000:
+      balance: '100000000000'
+      nonce: ''
+      storage: {}
+      code: |
+        (module
+          (import "ethereum" "call" (func $call (param i64 i32 i32 i32 i32) (result i32)))
+          (import "ethereum" "storageStore" (func $storageStore (param i32 i32)))
+
+          (memory 1)
+          (data (i32.const 0) "\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\ef\be\ad\de")
+
+          (export "memory" (memory 0))
+          (export "main" (func $main))
+
+          (func $main
+            ;; locals
+            (local $memStart i32)
+            (local $ptrStorageKey1 i32)
+            (local $ptrValue i32)
+            (local $ptrData i32)
+            (local $ptrResult i32)
+
+            ;; init
+            (set_local $memStart (i32.const 32))
+
+            ;; init pointers
+            (set_local $ptrStorageKey1 (get_local $memStart))
+            (set_local $ptrValue (i32.add (get_local $memStart) (i32.const 32)))
+            (set_local $ptrData (i32.add (get_local $memStart) (i32.const 64)))
+            (set_local $ptrResult (i32.add (get_local $memStart) (i32.const 96)))
+
+            ;; init mem
+            (i32.store (get_local $ptrStorageKey1) (i32.const 1))
+            (i32.store (get_local $ptrValue) (i32.const 0))
+            (i32.store (get_local $ptrData) (i32.const 0xbeef))
+
+            ;; call CALL with data and save result
+            (i32.store
+              (get_local $ptrResult)
+              (call $call
+                ;; gas limit
+                (i64.const 200000)
+                ;; address offset (stored in data section above)
+                (i32.const 0)
+                ;; value offset
+                (get_local $ptrValue)
+                ;; data offset
+                (get_local $ptrData)
+                ;; data length
+                (i32.const 2)
+              )
+            )
+
+            ;; store the result
+            (call $storageStore
+              (get_local $ptrStorageKey1)
+              (get_local $ptrResult)
+            )
+          )
+        )
+  expect:
+    - indexes:
+        data: !!int -1
+        gas: !!int -1
+        value: !!int -1
+      network:
+        - ALL
+      result:
+        a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          balance: '99999933292'
+        deadbeef00000000000000000000000000000000:
+          storage: {
+            # Expect success from CALL
+            1: "0"
+          }
+        deadbeef00000000000000000000000000000001:
+          storage: {
+            # Length of received data
+            10: "2",
+            # Received data
+            11: "0xbeef"
+          }
+          balance: "100000000000"
+  transaction:
+    data:
+    - '0x'
+    gasLimit:
+    - '0x6acfc0'
+    gasPrice: '0x01'
+    nonce: '0x04'
+    secretKey: "45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8"
+    to: 'deadbeef00000000000000000000000000000000'
+    value:
+    - '0'
