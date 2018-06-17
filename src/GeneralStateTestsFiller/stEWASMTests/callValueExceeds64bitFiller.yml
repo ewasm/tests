@@ -10,11 +10,11 @@ callValueExceeds64bit:
   pre:
     a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
       balance: 100000000000
-      #balance: 0x10000000000000000
       code: ''
       nonce: '0x4'
       storage: {}
     deadbeef00000000000000000000000000000001:
+      # This account receives the CALL value
       balance: 0
       nonce: ''
       storage: {}
@@ -80,6 +80,7 @@ callValueExceeds64bit:
           )
         )
     deadbeef00000000000000000000000000000000:
+      # This account spends its entire balance on the call
       balance: 0x10000000000000000
       nonce: ''
       storage: {}
@@ -119,9 +120,10 @@ callValueExceeds64bit:
             (i32.store (get_local $ptrStorageKey1) (i32.const 1))
 
             ;; max 64-bit (8 byte) value is 0xffffffffffffffff
-            ;; to store a value greater than this, we need two i64.store operations, one
-            ;; operating on the lower-order 8 bytes, the second operating on the higher-
-            ;; order 8 bytes. Store a value one greater than the max 64 bit value.
+            ;; to store a value greater than this (0x10000000000000000), we need
+            ;; two i64.store operations, one operating on the lower-order 8
+            ;; bytes, the second operating on the higher-order 8 bytes. Store a
+            ;; value one greater than the max 64 bit value.
             (i64.store (get_local $ptrValueLow) (i64.const 0))
             (i64.store (get_local $ptrValueHigh) (i64.const 1))
             (i32.store (get_local $ptrData) (i32.const 0))
@@ -162,14 +164,15 @@ callValueExceeds64bit:
         - ALL
       result:
         a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
-          balance: '99999956595'
+          balance: 99999956595
         deadbeef00000000000000000000000000000000:
+          balance: 0
           storage: {
           }
         deadbeef00000000000000000000000000000001:
           storage: {
           }
-          balance: "0x10000000000000000"
+          balance: 0x10000000000000000
   transaction:
     data:
     - '0x'
