@@ -9,12 +9,12 @@ callValueExceedsBalance:
     previousHash: 5e20a0453cecd065ea59c37ac63e079ee08998b6045136a8ce6635c7912ec0b6
   pre:
     a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
-      balance: '100000000000'
+      balance: 100000000000
       code: ''
       nonce: '0x4'
       storage: {}
     deadbeef00000000000000000000000000000001:
-      balance: '100000000'
+      balance: 0
       nonce: ''
       storage: {}
       code: |
@@ -79,7 +79,7 @@ callValueExceedsBalance:
           )
         )
     deadbeef00000000000000000000000000000000:
-      balance: '100000000'
+      balance: 0
       nonce: ''
       storage: {}
       code: |
@@ -113,7 +113,7 @@ callValueExceedsBalance:
             ;; init mem
             (i32.store (get_local $ptrStorageKey1) (i32.const 1))
             ;; value is 1 greater than this account's balance
-            (i32.store (get_local $ptrValue) (i32.const 100000001))
+            (i32.store (get_local $ptrValue) (i32.const 1))
             (i32.store (get_local $ptrData) (i32.const 0))
 
             ;; call CALL with data and save result
@@ -149,19 +149,26 @@ callValueExceedsBalance:
         - ALL
       result:
         a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
-          balance: '99993000000'
+          # Charged for call but unused gas refunded
+          balance: 99999951600
         deadbeef00000000000000000000000000000000:
+          # no change in balance
+          balance: 0
           storage: {
+            # call should have failed
+            1: 1
           }
         deadbeef00000000000000000000000000000001:
+          # no change in balance
+          balance: 0
+          # no storage written
           storage: {
           }
-          balance: "100000000"
   transaction:
     data:
     - '0x'
     gasLimit:
-    - '0x6acfc0'
+    - 7000000
     gasPrice: '0x01'
     nonce: '0x04'
     secretKey: "45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8"
