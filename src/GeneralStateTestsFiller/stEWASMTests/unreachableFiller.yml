@@ -1,3 +1,4 @@
+# Tests that an (unreachable) trap does not result in the creation of a new account.
 unreachable:
   env:
     currentCoinbase: 2adc25665018aa1fe0e6bc666dac8fc2697ff9ba
@@ -26,7 +27,7 @@ unreachable:
     data:
     - |
       (module
-        (memory 1 )
+        (memory 1)
         (export "memory" (memory 0))
         (export "main" (func $main))
         (func $main
