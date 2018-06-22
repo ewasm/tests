@@ -153,7 +153,7 @@ callValue:
         deadbeef00000000000000000000000000000000:
           # Balance should be updated to deduct value in CALL
           # balance = 100000000000 - 0xbeef (48879) = 99999951121
-          balance: 99999951122
+          balance: 99999951121
           storage: {
             # Expect success from CALL
             1: "0"
