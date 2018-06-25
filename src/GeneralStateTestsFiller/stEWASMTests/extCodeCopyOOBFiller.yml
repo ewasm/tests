@@ -1,0 +1,124 @@
+# Test extCodeCopy from out of bounds location.
+extCodeCopyOOB:
+  env:
+    currentCoinbase: 2adc25665018aa1fe0e6bc666dac8fc2697ff9ba
+    currentDifficulty: '0x020000'
+    currentGasLimit: '89128960'
+    currentNumber: '1'
+    currentTimestamp: '1000'
+    previousHash: 5e20a0453cecd065ea59c37ac63e079ee08998b6045136a8ce6635c7912ec0b6
+  pre:
+    a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+      balance: '100000000000'
+      code: ''
+      nonce: ''
+      storage: {}
+    deadbeef00000000000000000000000000000001:
+      balance: '100000000000'
+      nonce: ''
+      storage: {}
+      code: |
+        (module
+          (memory 1)
+          (export "memory" (memory 0))
+          (export "main" (func $main))
+
+          (func $main
+            ;; this code is never actually called
+            (unreachable)
+          )
+        )
+    deadbeef00000000000000000000000000000000:
+      balance: '100000000000'
+      code: |
+        (module
+          (import "ethereum" "externalCodeCopy" (func $externalCodeCopy (param i32 i32 i32 i32)))
+          (import "ethereum" "getExternalCodeSize" (func $getExternalCodeSize (param i32) (result i32)))
+          (import "ethereum" "storageStore" (func $storageStore (param i32 i32)))
+          (memory 1)
+          (data (i32.const 0) "\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\ef\be\ad\de")
+          (export "memory" (memory 0))
+          (export "main" (func $main))
+
+          (func $main
+            ;; locals
+            (local $ptrAddress i32)
+            (local $ptrStorageKey1 i32)
+            (local $ptrStorageVal1 i32)
+            (local $ptrStorageKey2 i32)
+            (local $ptrStorageVal2 i32)
+            (local $codeSize i32)
+
+            ;; memory layout
+            (set_local $ptrAddress (i32.const 0))
+            (set_local $ptrStorageKey1 (i32.const 32))
+            (set_local $ptrStorageVal1 (i32.const 64))
+            (set_local $ptrStorageKey2 (i32.const 96))
+            (set_local $ptrStorageVal2 (i32.const 128))
+
+            ;; init memory
+            (i32.store (get_local $ptrStorageKey1) (i32.const 1))
+            (i32.store (get_local $ptrStorageKey2) (i32.const 2))
+
+            ;; get code size
+            (set_local $codeSize (call $getExternalCodeSize (get_local $ptrAddress)))
+
+            ;; first call: totally out of bounds
+            (call $externalCodeCopy
+              ;; addressOffset: the memory offset to load the address from
+              (get_local $ptrAddress)
+              ;; resultOffset: the memory offset to load the result into
+              (get_local $ptrStorageVal1)
+              ;; codeOffset the offset within the code
+              (get_local $codeSize)
+              ;; length the length of code to copy
+              (i32.const 10)
+            )
+            (call $storageStore (get_local $ptrStorageKey1) (get_local $ptrStorageVal1))
+
+            ;; second call: partially out of bounds
+            (call $externalCodeCopy
+              ;; addressOffset: the memory offset to load the address from
+              (get_local $ptrAddress)
+              ;; resultOffset: the memory offset to load the result into
+              (get_local $ptrStorageVal2)
+              ;; codeOffset the offset within the code
+              ;; Set this near the end of the code
+              (i32.sub (get_local $codeSize) (i32.const 5))
+              ;; length the length of code to copy
+              (i32.const 10)
+            )
+            (call $storageStore (get_local $ptrStorageKey2) (get_local $ptrStorageVal2))
+          )
+        )
+      nonce: ''
+      storage: {}
+  expect:
+    - indexes:
+        data: !!int -1
+        gas: !!int -1
+        value: !!int -1
+      network:
+        - ALL
+      result:
+        a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          balance: "99999951894"
+        deadbeef00000000000000000000000000000000:
+          storage: {
+            # This storage slot should contain all zeroes since we called
+            # $codeCopy out of bounds.
+            1: "0x00000000000000000000",
+            # This storage slot should contain half code, half zeroes.
+            2: "0x00000000006e69616d04"
+          }
+  transaction:
+    data:
+    - ''
+    gasLimit:
+    - '0x5000001'
+    gasPrice: '0x01'
+    nonce: '0x00'
+    secretKey: "45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8"
+    to: 'deadbeef00000000000000000000000000000000'
+    value:
+    - '0'
