@@ -1,0 +1,216 @@
+# Simple test to read return data out of bounds using returnDataCopy
+returnDataCopyOOB:
+  env:
+    currentCoinbase: 2adc25665018aa1fe0e6bc666dac8fc2697ff9ba
+    currentDifficulty: '0x020000'
+    currentGasLimit: '89128960'
+    currentNumber: '1'
+    currentTimestamp: '1000'
+    previousHash: 5e20a0453cecd065ea59c37ac63e079ee08998b6045136a8ce6635c7912ec0b6
+  pre:
+    a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+      balance: '100000000000'
+      code: ''
+      nonce: '0x4'
+      storage: {}
+    # Called contract, just returns some dummy data
+    deadbeef00000000000000000000000000000001:
+      balance: '0'
+      nonce: ''
+      storage: {}
+      code: |
+        (module
+          (import "ethereum" "return" (func $return (param i32 i32)))
+          (memory 1)
+          ;; data to return
+          (data (i32.const 2048) "\de\ad\be\ef")
+          (export "memory" (memory 0))
+          (export "main" (func $main))
+
+          (func $main
+            ;; locals
+            (local $ptrCode i32)
+            (local $codeLen i32)
+
+            ;; memory, init
+            (set_local $ptrCode (i32.const 2048))
+            (set_local $codeLen (i32.const 4))
+
+            (call $return
+              (get_local $ptrCode)
+              (get_local $codeLen)
+            )
+          )
+        )
+    # First test, attempts to read beyond length of return data
+    deadbeef00000000000000000000000000000002:
+      balance: '0'
+      nonce: ''
+      storage: {}
+      code: |
+        (module
+          (import "ethereum" "call" (func $call (param i64 i32 i32 i32 i32) (result i32)))
+          (import "ethereum" "return" (func $return (param i32 i32)))
+          (import "ethereum" "getReturnDataSize" (func $getReturnDataSize (result i32)))
+          (import "ethereum" "returnDataCopy" (func $returnDataCopy (param i32 i32 i32)))
+          (memory 1)
+          ;;(data (i32.const 512) "\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\ef\be\ad\de")
+          (export "memory" (memory 0))
+          (export "main" (func $main))
+
+          (func $main
+            ;; locals
+            (local $memOffset i32)
+            (local $ptrCallResult i32)
+            (local $ptrResult i32)
+            (local $retDataSize i32)
+            (local $ptrCallAddr i32)
+
+            ;; mem offset
+            (set_local $memOffset (i32.const 1024))
+
+            ;; memory layout and pointers
+            (set_local $ptrResult (i32.add (get_local $memOffset) (i32.const 0)))
+            (set_local $ptrCallResult (i32.add (get_local $memOffset) (i32.const 32)))
+
+            ;; init
+            ;; defined in data section below
+            (set_local $ptrCallAddr (i32.const 512))
+
+            ;; call CALL and save the result (success or failure)
+            (i32.store
+              (get_local $ptrCallResult)
+              (call $call
+                ;; gas
+                (i64.const 100000)
+                ;; addrOffset
+                (get_local $ptrCallAddr)
+                ;; valOffset
+                (i32.const 0)
+                ;; data offset
+                (i32.const 0)
+                ;; data length
+                (i32.const 0)
+              )
+            )
+
+            ;; get return data size
+            (set_local $retDataSize (call $getReturnDataSize))
+
+            ;; call returnDataCopy out of bounds
+            ;; we expect this to throw
+            (call $returnDataCopy
+              ;; resultOffset i32ptr the memory offset to load data into (bytes)
+              (get_local $ptrResult)
+              ;; dataOffset i32 the offset in the return data
+              (i32.const 0)
+              ;; length i32 the length of data to copy
+              ;; overflow the length by one
+              (i32.add (get_local $retDataSize) (i32.const 1))
+              ;;(i32.add (get_local $retDataSize) (i32.const 1))
+            )
+
+            ;; we don't expect this to execute
+            (call $return (i32.const 0) (i32.const 0))
+          )
+        )
+    deadbeef00000000000000000000000000000000:
+      balance: '100000000000'
+      nonce: ''
+      storage: {}
+      code: |
+        (module
+          (import "ethereum" "call" (func $call (param i64 i32 i32 i32 i32) (result i32)))
+          (import "ethereum" "storageStore" (func $storageStore (param i32 i32)))
+          (memory 1)
+
+          ;; Location of contracts to call
+          (data (i32.const 512) "\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\ef\be\ad\de")
+          (data (i32.const 544) "\02\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\ef\be\ad\de")
+
+          (export "memory" (memory 0))
+          (export "main" (func $main))
+
+          (func $main
+            ;; locals
+            (local $ptrStorageKey1 i32)
+            (local $ptrStorageKey2 i32)
+            (local $ptrResult i32)
+            (local $codeLen i32)
+            (local $ptrCallResult1 i32)
+            (local $ptrCallResult2 i32)
+            (local $retDataSize i32)
+            (local $ptrCallAddr1 i32)
+            (local $ptrCallAddr2 i32)
+
+            ;; memory layout and pointers
+            (set_local $ptrStorageKey1 (i32.const 32))
+            (set_local $ptrStorageKey2 (i32.const 64))
+            (set_local $ptrResult (i32.const 160))
+            (set_local $ptrCallResult1 (i32.const 192))
+            (set_local $ptrCallResult2 (i32.const 224))
+
+            ;; data pointers
+            (set_local $ptrCallAddr1 (i32.const 512))
+            (set_local $ptrCallAddr2 (i32.const 544))
+
+            ;; initialize
+            (i32.store (get_local $ptrStorageKey1) (i32.const 1))
+            (i32.store (get_local $ptrStorageKey2) (i32.const 2))
+
+            ;; call first test and save result
+            (i32.store
+              (get_local $ptrCallResult1)
+              (call $call
+                ;; gas
+                (i64.const 100000)
+                ;; addrOffset
+                (get_local $ptrCallAddr2)
+                ;; valOffset
+                (i32.const 0)
+                ;; data offset
+                (i32.const 0)
+                ;; data length
+                (i32.const 0)
+              )
+            )
+
+            ;; Store the CALL result
+            (call $storageStore
+              (get_local $ptrStorageKey1)
+              (get_local $ptrCallResult1)
+            )
+          )
+        )
+  expect:
+    - indexes:
+        data: !!int -1
+        gas: !!int -1
+        value: !!int -1
+      network:
+        - ALL
+      result:
+        a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          # Expect all gas to be consumed by trap
+          # 100000000000 - 7000000 = 99993000000
+          balance: '99993000000'
+        deadbeef00000000000000000000000000000000:
+          storage: {
+            # Expect CALL to return failure
+            # $ptrStorageKey1 = 1
+            1: '1',
+            # Expect this to be empty since the call throws
+            # $ptrStorageKey2 = 2
+            2: '0'
+          }
+  transaction:
+    data:
+    - '0x'
+    gasLimit:
+    - '0x6acfc0'
+    gasPrice: '0x01'
+    nonce: '0x04'
+    secretKey: "45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8"
+    to: 'deadbeef00000000000000000000000000000000'
+    value:
+    - '0'
