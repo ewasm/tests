@@ -35,7 +35,6 @@ extCodeCopyPartiallyOOB:
           (import "ethereum" "externalCodeCopy" (func $externalCodeCopy (param i32 i32 i32 i32)))
           (import "ethereum" "getExternalCodeSize" (func $getExternalCodeSize (param i32) (result i32)))
           (import "ethereum" "storageStore" (func $storageStore (param i32 i32)))
-          (import "debug" "printMemHex" (func $printMemHex (param i32 i32)))
           (memory 1)
           (data (i32.const 0) "\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\ef\be\ad\de")
           (export "memory" (memory 0))
@@ -68,7 +67,6 @@ extCodeCopyPartiallyOOB:
             (set_local $codeSize (call $getExternalCodeSize (get_local $ptrAddress)))
 
             (i32.store (i32.const 256) (get_local $codeSize))
-            (call $printMemHex (i32.const 256) (i32.const 32))
 
             ;; we expect this to trap
             (call $externalCodeCopy
