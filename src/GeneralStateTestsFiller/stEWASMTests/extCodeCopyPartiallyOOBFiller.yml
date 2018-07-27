@@ -1,5 +1,5 @@
-# Test extCodeCopy from out of bounds location.
-extCodeCopyOOB:
+# Test extCodeCopy from partially out of bounds location.
+extCodeCopyPartiallyOOB:
   env:
     currentCoinbase: 2adc25665018aa1fe0e6bc666dac8fc2697ff9ba
     currentDifficulty: '0x020000'
@@ -35,6 +35,7 @@ extCodeCopyOOB:
           (import "ethereum" "externalCodeCopy" (func $externalCodeCopy (param i32 i32 i32 i32)))
           (import "ethereum" "getExternalCodeSize" (func $getExternalCodeSize (param i32) (result i32)))
           (import "ethereum" "storageStore" (func $storageStore (param i32 i32)))
+          (import "debug" "printMemHex" (func $printMemHex (param i32 i32)))
           (memory 1)
           (data (i32.const 0) "\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\ef\be\ad\de")
           (export "memory" (memory 0))
@@ -60,34 +61,29 @@ extCodeCopyOOB:
             (i32.store (get_local $ptrStorageKey1) (i32.const 1))
             (i32.store (get_local $ptrStorageKey2) (i32.const 2))
 
+            ;; arbitrary value, just make sure it's not written to storage
+            (i32.store (get_local $ptrStorageVal2) (i32.const 1))
+
             ;; get code size
             (set_local $codeSize (call $getExternalCodeSize (get_local $ptrAddress)))
 
-            ;; first call: totally out of bounds
+            (i32.store (i32.const 256) (get_local $codeSize))
+            (call $printMemHex (i32.const 256) (i32.const 32))
+
+            ;; we expect this to trap
             (call $externalCodeCopy
               ;; addressOffset: the memory offset to load the address from
               (get_local $ptrAddress)
               ;; resultOffset: the memory offset to load the result into
               (get_local $ptrStorageVal1)
               ;; codeOffset the offset within the code
-              (get_local $codeSize)
-              ;; length the length of code to copy
-              (i32.const 10)
-            )
-            (call $storageStore (get_local $ptrStorageKey1) (get_local $ptrStorageVal1))
-
-            ;; second call: partially out of bounds
-            (call $externalCodeCopy
-              ;; addressOffset: the memory offset to load the address from
-              (get_local $ptrAddress)
-              ;; resultOffset: the memory offset to load the result into
-              (get_local $ptrStorageVal2)
-              ;; codeOffset the offset within the code
               ;; Set this near the end of the code
               (i32.sub (get_local $codeSize) (i32.const 5))
               ;; length the length of code to copy
               (i32.const 10)
             )
+            ;; we don't expect to reach these next lines
+            (call $storageStore (get_local $ptrStorageKey1) (get_local $ptrStorageVal1))
             (call $storageStore (get_local $ptrStorageKey2) (get_local $ptrStorageVal2))
           )
         )
@@ -102,15 +98,10 @@ extCodeCopyOOB:
         - ALL
       result:
         a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
-          balance: "99999951894"
+          balance: "99916113919"
         deadbeef00000000000000000000000000000000:
-          storage: {
-            # This storage slot should contain all zeroes since we called
-            # $codeCopy out of bounds.
-            1: "0x00000000000000000000",
-            # This storage slot should contain half code, half zeroes.
-            2: "0x00000000006e69616d04"
-          }
+          # Storage should be empty because nothing was written successfully
+          storage: {}
   transaction:
     data:
     - ''
