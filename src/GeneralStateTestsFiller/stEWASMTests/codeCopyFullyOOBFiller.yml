@@ -1,4 +1,4 @@
-# Tests code copy from partially out-of-bounds location.
+# Tests code copy from fully out-of-bounds location.
 codeCopyFullyOOB:
   env:
     currentCoinbase: 2adc25665018aa1fe0e6bc666dac8fc2697ff9ba
