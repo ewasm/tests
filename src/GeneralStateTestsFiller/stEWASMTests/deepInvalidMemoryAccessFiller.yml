@@ -1,4 +1,4 @@
-# Simple test to read return data out of bounds using returnDataCopy
+# Test EVMC_INVALID_MEMORY_ACCESS exception inside called contract
 deepInvalidMemoryAccess:
   env:
     currentCoinbase: 2adc25665018aa1fe0e6bc666dac8fc2697ff9ba
