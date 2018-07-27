@@ -107,7 +107,6 @@ returnDataCopyOOB:
               ;; length i32 the length of data to copy
               ;; overflow the length by one
               (i32.add (get_local $retDataSize) (i32.const 1))
-              ;;(i32.add (get_local $retDataSize) (i32.const 1))
             )
 
             ;; we don't expect this to execute
