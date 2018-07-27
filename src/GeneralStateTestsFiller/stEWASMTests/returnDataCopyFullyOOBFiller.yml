@@ -1,5 +1,5 @@
-# Simple test to read return data out of bounds using returnDataCopy
-returnDataCopyOOB:
+# Simple test to read return data fully out of bounds using returnDataCopy
+returnDataCopyFullyOOB:
   env:
     currentCoinbase: 2adc25665018aa1fe0e6bc666dac8fc2697ff9ba
     currentDifficulty: '0x020000'
@@ -42,8 +42,7 @@ returnDataCopyOOB:
             )
           )
         )
-    # First test, attempts to read beyond length of return data
-    deadbeef00000000000000000000000000000002:
+    deadbeef00000000000000000000000000000000:
       balance: '0'
       nonce: ''
       storage: {}
@@ -53,8 +52,9 @@ returnDataCopyOOB:
           (import "ethereum" "return" (func $return (param i32 i32)))
           (import "ethereum" "getReturnDataSize" (func $getReturnDataSize (result i32)))
           (import "ethereum" "returnDataCopy" (func $returnDataCopy (param i32 i32 i32)))
+          (import "ethereum" "storageStore" (func $storageStore (param i32 i32)))
           (memory 1)
-          ;;(data (i32.const 512) "\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\ef\be\ad\de")
+          (data (i32.const 512) "\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\ef\be\ad\de")
           (export "memory" (memory 0))
           (export "main" (func $main))
 
@@ -62,20 +62,26 @@ returnDataCopyOOB:
             ;; locals
             (local $memOffset i32)
             (local $ptrCallResult i32)
-            (local $ptrResult i32)
             (local $retDataSize i32)
             (local $ptrCallAddr i32)
-
-            ;; mem offset
-            (set_local $memOffset (i32.const 1024))
+            (local $ptrStorageKey1 i32)
+            (local $ptrStorageKey2 i32)
+            (local $ptrStorageVal1 i32)
+            (local $ptrStorageVal2 i32)
 
             ;; memory layout and pointers
-            (set_local $ptrResult (i32.add (get_local $memOffset) (i32.const 0)))
-            (set_local $ptrCallResult (i32.add (get_local $memOffset) (i32.const 32)))
+            (set_local $ptrStorageKey1 (i32.const 0))
+            (set_local $ptrStorageKey2 (i32.const 32))
+            (set_local $ptrStorageVal1 (i32.const 64))
+            (set_local $ptrStorageVal2 (i32.const 96))
+            (set_local $ptrCallResult (i32.const 160))
 
             ;; init
-            ;; defined in data section below
+            ;; defined in data section
             (set_local $ptrCallAddr (i32.const 512))
+
+            ;; arbitrary value, just make sure it's not written to storage
+            (i32.store (get_local $ptrStorageVal2) (i32.const 1))
 
             ;; call CALL and save the result (success or failure)
             (i32.store
@@ -98,87 +104,20 @@ returnDataCopyOOB:
             (set_local $retDataSize (call $getReturnDataSize))
 
             ;; call returnDataCopy out of bounds
-            ;; we expect this to throw
+            ;; we expect this to trap
             (call $returnDataCopy
               ;; resultOffset i32ptr the memory offset to load data into (bytes)
-              (get_local $ptrResult)
+              (get_local $ptrStorageVal1)
               ;; dataOffset i32 the offset in the return data
-              (i32.const 0)
+              ;; Set this beyond the end of the code
+              (get_local $retDataSize)
               ;; length i32 the length of data to copy
-              ;; overflow the length by one
-              (i32.add (get_local $retDataSize) (i32.const 1))
+              (get_local $retDataSize)
             )
 
-            ;; we don't expect this to execute
-            (call $return (i32.const 0) (i32.const 0))
-          )
-        )
-    deadbeef00000000000000000000000000000000:
-      balance: '100000000000'
-      nonce: ''
-      storage: {}
-      code: |
-        (module
-          (import "ethereum" "call" (func $call (param i64 i32 i32 i32 i32) (result i32)))
-          (import "ethereum" "storageStore" (func $storageStore (param i32 i32)))
-          (memory 1)
-
-          ;; Location of contracts to call
-          (data (i32.const 512) "\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\ef\be\ad\de")
-          (data (i32.const 544) "\02\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\ef\be\ad\de")
-
-          (export "memory" (memory 0))
-          (export "main" (func $main))
-
-          (func $main
-            ;; locals
-            (local $ptrStorageKey1 i32)
-            (local $ptrStorageKey2 i32)
-            (local $ptrResult i32)
-            (local $codeLen i32)
-            (local $ptrCallResult1 i32)
-            (local $ptrCallResult2 i32)
-            (local $retDataSize i32)
-            (local $ptrCallAddr1 i32)
-            (local $ptrCallAddr2 i32)
-
-            ;; memory layout and pointers
-            (set_local $ptrStorageKey1 (i32.const 32))
-            (set_local $ptrStorageKey2 (i32.const 64))
-            (set_local $ptrResult (i32.const 160))
-            (set_local $ptrCallResult1 (i32.const 192))
-            (set_local $ptrCallResult2 (i32.const 224))
-
-            ;; data pointers
-            (set_local $ptrCallAddr1 (i32.const 512))
-            (set_local $ptrCallAddr2 (i32.const 544))
-
-            ;; initialize
-            (i32.store (get_local $ptrStorageKey1) (i32.const 1))
-            (i32.store (get_local $ptrStorageKey2) (i32.const 2))
-
-            ;; call first test and save result
-            (i32.store
-              (get_local $ptrCallResult1)
-              (call $call
-                ;; gas
-                (i64.const 100000)
-                ;; addrOffset
-                (get_local $ptrCallAddr2)
-                ;; valOffset
-                (i32.const 0)
-                ;; data offset
-                (i32.const 0)
-                ;; data length
-                (i32.const 0)
-              )
-            )
-
-            ;; Store the CALL result
-            (call $storageStore
-              (get_local $ptrStorageKey1)
-              (get_local $ptrCallResult1)
-            )
+            ;; we don't expect the rest to execute
+            (call $storageStore (get_local $ptrStorageKey1) (get_local $ptrStorageVal1))
+            (call $storageStore (get_local $ptrStorageKey2) (get_local $ptrStorageVal2))
           )
         )
   expect:
@@ -194,14 +133,8 @@ returnDataCopyOOB:
           # 100000000000 - 7000000 = 99993000000
           balance: '99993000000'
         deadbeef00000000000000000000000000000000:
-          storage: {
-            # Expect CALL to return failure
-            # $ptrStorageKey1 = 1
-            1: '1',
-            # Expect this to be empty since the call throws
-            # $ptrStorageKey2 = 2
-            2: '0'
-          }
+          # Storage should be empty because nothing was written successfully
+          storage: {}
   transaction:
     data:
     - '0x'
