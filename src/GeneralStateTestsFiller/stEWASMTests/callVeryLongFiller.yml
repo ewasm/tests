@@ -1,5 +1,5 @@
-# Test OOB memory read in revert call.
-revertVeryLong:
+# Test OOB memory read in call.
+callVeryLong:
   env:
     currentCoinbase: 2adc25665018aa1fe0e6bc666dac8fc2697ff9ba
     currentDifficulty: '0x020000'
@@ -14,27 +14,15 @@ revertVeryLong:
       code: ''
       nonce: ''
       storage: {}
-    # called contract, very simple, just calls revert
+    # called contract, very simple
     deadbeef00000000000000000000000000000000:
       balance: '100000000000'
       code: |
         (module
-          (import "ethereum" "revert" (func $revert (param i32 i32)))
           (memory 1)
           (export "memory" (memory 0))
           (export "main" (func $main))
           (func $main
-            ;; Store some data to return
-            (i32.store (i32.const 0) (i32.const 0xabcd))
-
-            ;; Revert and return it
-            (call $revert
-              ;; dataOffset i32ptr the memory offset of the output data (bytes)
-              (i32.const 0)
-              ;; length i32 the length of the output data
-              ;; attempt to overflow
-              (i32.const 0xffffffff)
-            )
           )
         )
       nonce: ''
@@ -46,8 +34,6 @@ revertVeryLong:
         (module
           (import "ethereum" "call" (func $call (param i64 i32 i32 i32 i32) (result i32)))
           (import "ethereum" "storageStore" (func $storageStore (param i32 i32)))
-          (import "ethereum" "getReturnDataSize" (func $getReturnDataSize (result i32)))
-          (import "ethereum" "returnDataCopy" (func $returnDataCopy (param i32 i32 i32)))
 
           (memory 1)
           (data (i32.const 0)  "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\ef\be\ad\de")
@@ -59,26 +45,20 @@ revertVeryLong:
             ;; memory layout
             (local $memAddress i32)
             (local $memValue i32)
-            (local $memRetdata i32)
-            (local $memResult i32)
             (local $memStoragekey1 i32)
-            (local $memStoragekey2 i32)
-            (local $memRetdatasize i32)
+            (local $memStorageval1 i32)
 
             (set_local $memAddress (i32.const 0))
             (set_local $memValue (i32.const 32))
-            (set_local $memResult (i32.const 96))
-            (set_local $memStoragekey1 (i32.const 128))
-            (set_local $memStoragekey2 (i32.const 160))
-            (set_local $memRetdatasize (i32.const 224))
+            (set_local $memStoragekey1 (i32.const 64))
+            (set_local $memStorageval1 (i32.const 96))
 
-            ;; storage keys
+            ;; init
             (i32.store (get_local $memStoragekey1) (i32.const 0))
-            (i32.store (get_local $memStoragekey2) (i32.const 1))
+            (i32.store (get_local $memStorageval1) (i32.const 1))
 
-            (i32.store
-              ;; store success/failure in mem
-              (get_local $memResult)
+            ;; we expect this to trap
+            (drop
               (call $call
                 ;; gas i64 the gas limit
                 (i64.const 100000)
@@ -89,17 +69,15 @@ revertVeryLong:
                 ;; dataOffset i32ptr the memory offset to load data from (bytes)
                 (get_local $memValue)
                 ;; dataLength i32 the length of data
-                (i32.const 1)
+                ;; attempt to overflow here
+                (i32.const 0xffffffff)
               )
             )
 
-            ;; Store return data size to check it (it should be 0)
-            (i32.store (get_local $memRetdatasize) (call $getReturnDataSize))
-            
-            (call $storageStore (get_local $memStoragekey1) (get_local $memRetdatasize))
+            ;; nothing beyond here should execute
 
-            ;; Store the return value to make sure it was 2 (revert)
-            (call $storageStore (get_local $memStoragekey2) (get_local $memResult))
+            ;; store an arbitrary value, which we do not expect to get written
+            (call $storageStore (get_local $memStoragekey1) (get_local $memStorageval1))
           )
         )
       nonce: ''
@@ -112,19 +90,11 @@ revertVeryLong:
       network:
         - ALL
       result:
-        # initialBalance - c1.call - c1.sstore - c1.grds - c1.sstore - c1.grds - c1.rdc - c1.sstore - c2.sstore - c2.revert - txCost
-        # 100000000000   - 700     - 20000     - 2       - 20000     - 2       - 3      - 20000     - 20000     - 0         - 21000 = 99999898293
         a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
-          balance: '99999898293'
+          balance: '99916113919'
         abcdabcdabcdabcdabcdabcdabcdabcdabcdabcd:
-          storage: {
-            # length of return data (zero)
-            0: '',
-            # return data (via $returnDataCopy) (empty)
-            1: '',
-            # result (should be 2 for revert)
-            2: '0x02',
-          }
+          # expect empty storage
+          storage: {}
   transaction:
     data: 
     - ''
