@@ -125,9 +125,7 @@ deepInvalidMemoryAccess:
         - ALL
       result:
         a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
-          # Expect all gas to be consumed by trap
-          # 100000000000 - 7000000 = 99993000000
-          balance: '99993000000'
+          balance: '99999838300'
         deadbeef00000000000000000000000000000000:
           storage: {
             # Expect CALL to return failure
