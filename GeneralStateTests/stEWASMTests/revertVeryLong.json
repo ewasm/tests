@@ -5,7 +5,7 @@
             "filledwith" : "testeth 1.4.0rc0",
             "lllcversion" : "Version: 0.4.20-develop.2018.1.14+commit.0c20b6da.Darwin.appleclang",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/revertVeryLongFiller.yml",
-            "sourceHash" : "07dcc86f98352f5025fdc169bdf6d78d8bf7150ce391c68209763098ebf57e60"
+            "sourceHash" : "0468df15f0db9d1ae78258bc165a58c9f2a02ae5105384e6d4d7b082056a3cab"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",
