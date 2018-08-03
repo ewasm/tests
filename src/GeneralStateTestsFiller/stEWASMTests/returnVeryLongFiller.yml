@@ -19,21 +19,21 @@ returnVeryLong:
       balance: '100000000000'
       code: |
         (module
-          (import "ethereum" "create" (func $create (param i32 i32 i32 i32) (result i32)))
+          (import "ethereum" "return" (func $return (param i32 i32)))
           (memory 1)
           (export "memory" (memory 0))
           (export "main" (func $main))
           (func $main
-            (call $create
-              ;; value offset
+            ;; Store some data to return
+            (i32.store (i32.const 0) (i32.const 0xabcd))
+
+            ;; Revert and return it
+            (call $return
+              ;; dataOffset i32ptr the memory offset of the output data (bytes)
               (i32.const 0)
-              ;; data offset
-              (i32.const 0)
-              ;; data length
-              ;; overflow here
+              ;; length i32 the length of the output data
+              ;; attempt to overflow
               (i32.const 0xffffffff)
-              ;; result offset (new contract address)
-              (i32.const 0)
             )
           )
         )
