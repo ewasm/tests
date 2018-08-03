@@ -1,5 +1,5 @@
-# Test OOB memory read in revert call.
-revertVeryLong:
+# Test OOB memory read in return call.
+returnVeryLong:
   env:
     currentCoinbase: 2adc25665018aa1fe0e6bc666dac8fc2697ff9ba
     currentDifficulty: '0x020000'
@@ -19,7 +19,7 @@ revertVeryLong:
       balance: '100000000000'
       code: |
         (module
-          (import "ethereum" "revert" (func $revert (param i32 i32)))
+          (import "ethereum" "return" (func $return (param i32 i32)))
           (memory 1)
           (export "memory" (memory 0))
           (export "main" (func $main))
@@ -28,7 +28,7 @@ revertVeryLong:
             (i32.store (i32.const 0) (i32.const 0xabcd))
 
             ;; Revert and return it
-            (call $revert
+            (call $return
               ;; dataOffset i32ptr the memory offset of the output data (bytes)
               (i32.const 0)
               ;; length i32 the length of the output data
