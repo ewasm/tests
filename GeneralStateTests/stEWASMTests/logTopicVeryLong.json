@@ -5,7 +5,7 @@
             "filledwith" : "testeth 1.4.0rc0",
             "lllcversion" : "Version: 0.4.20-develop.2018.1.14+commit.0c20b6da.Darwin.appleclang",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/logTopicVeryLongFiller.yml",
-            "sourceHash" : "8d05d0679de43e04b854e3af0a3fec8dfe22dd9bff7d98c69facc9bc989a1bb1"
+            "sourceHash" : "d5d2dedc2aa7f4be97fd5f58777350cdbd68bf4e2eaaec280e198cbec61448ee"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",
@@ -18,43 +18,13 @@
         "post" : {
             "Byzantium" : [
                 {
-                    "hash" : "0x7faf5ccd390a0904717e19dab09170a769700c661953c06f62bf0f969fc0ff06",
+                    "hash" : "0x9be8af1222f1f495b4c8212d954a1ebf555dcab0197f81fa473e200b92cd184b",
                     "indexes" : {
                         "data" : 0,
                         "gas" : 0,
                         "value" : 0
                     },
-                    "logs" : "0x4bf41730d435e1dd3e0b6005c6e2d2acfdb26e49d43d56e30b383ff1914b8654",
-                    "postState" : {
-                        "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba" : {
-                            "balance" : "0x7d4d",
-                            "code" : "",
-                            "nonce" : "0x00",
-                            "storage" : {
-                            }
-                        },
-                        "0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b" : {
-                            "balance" : "0x1748766ab3",
-                            "code" : "",
-                            "nonce" : "0x01",
-                            "storage" : {
-                            }
-                        },
-                        "0xabcdabcdabcdabcdabcdabcdabcdabcdabcdabcd" : {
-                            "balance" : "0x174876e800",
-                            "code" : "0x0061736d01000000011c0560057e7f7f7f7f017f60027f7f006000017f60037f7f7f0060000002600408657468657265756d0463616c6c000008657468657265756d0c73746f7261676553746f7265000108657468657265756d1167657452657475726e4461746153697a65000208657468657265756d0e72657475726e44617461436f70790003030201040503010001071102066d656d6f72790200046d61696e00040a56015401077f410021004120210141e0002103418001210441a001210541e00121062004410036020020054101360200200342a08d0620002001200141011000360200200610023602002004200610012005200310010b0b1a010041000b1400000000000000000000000000000000efbeadde",
-                            "nonce" : "0x00",
-                            "storage" : {
-                            }
-                        },
-                        "0xdeadbeef00000000000000000000000000000000" : {
-                            "balance" : "0x174876e800",
-                            "code" : "0x0061736d01000000010e0260077f7f7f7f7f7f7f0060000002100108657468657265756d036c6f670000030201010503010001071102066d656d6f72790200046d61696e00010a14011200410041004100417f41004100410010000b",
-                            "nonce" : "0x00",
-                            "storage" : {
-                            }
-                        }
-                    }
+                    "logs" : "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347"
                 }
             ]
         },
@@ -75,7 +45,7 @@
             },
             "0xdeadbeef00000000000000000000000000000000" : {
                 "balance" : "0x174876e800",
-                "code" : "0x0061736d01000000010e0260077f7f7f7f7f7f7f0060000002100108657468657265756d036c6f670000030201010503010001071102066d656d6f72790200046d61696e00010a14011200410041004100417f41004100410010000b",
+                "code" : "0x0061736d01000000010e0260077f7f7f7f7f7f7f0060000002100108657468657265756d036c6f670000030201010503010001071102066d656d6f72790200046d61696e00010a14011200410041004101417f41004100410010000b",
                 "nonce" : "0x00",
                 "storage" : {
                 }
