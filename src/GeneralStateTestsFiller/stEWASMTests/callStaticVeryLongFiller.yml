@@ -1,0 +1,106 @@
+# Test OOB memory read in callStatic
+callStaticVeryLong:
+  env:
+    currentCoinbase: 2adc25665018aa1fe0e6bc666dac8fc2697ff9ba
+    currentDifficulty: '0x020000'
+    currentGasLimit: '89128960'
+    currentNumber: '1'
+    currentTimestamp: '1000'
+    previousHash: 5e20a0453cecd065ea59c37ac63e079ee08998b6045136a8ce6635c7912ec0b6
+  pre:
+    # tx sender
+    a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+      balance: '100000000000'
+      code: ''
+      nonce: ''
+      storage: {}
+    # called contract, very simple
+    deadbeef00000000000000000000000000000000:
+      balance: '100000000000'
+      code: |
+        (module
+          (memory 1)
+          (export "memory" (memory 0))
+          (export "main" (func $main))
+          (func $main
+          )
+        )
+      nonce: ''
+      storage: {}
+    # main contract, tx receiver
+    abcdabcdabcdabcdabcdabcdabcdabcdabcdabcd:
+      balance: '100000000000'
+      code: |
+        (module
+          (import "ethereum" "callStatic" (func $callStatic (param i64 i32 i32 i32) (result i32)))
+          (import "ethereum" "storageStore" (func $storageStore (param i32 i32)))
+
+          (memory 1)
+          (data (i32.const 0)  "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\ef\be\ad\de")
+
+          (export "memory" (memory 0))
+          (export "main" (func $main))
+
+          (func $main
+            ;; memory layout
+            (local $memAddress i32)
+            (local $memValue i32)
+            (local $memStoragekey1 i32)
+            (local $memStorageval1 i32)
+
+            (set_local $memAddress (i32.const 0))
+            (set_local $memValue (i32.const 32))
+            (set_local $memStoragekey1 (i32.const 64))
+            (set_local $memStorageval1 (i32.const 96))
+
+            ;; init
+            (i32.store (get_local $memStoragekey1) (i32.const 0))
+            (i32.store (get_local $memStorageval1) (i32.const 1))
+
+            ;; we expect this to trap
+            (drop
+              (call $callStatic
+                ;; gas i64 the gas limit
+                (i64.const 100000)
+                ;; addressOffset i32ptr the memory offset to load the address from (address)
+                (get_local $memAddress)
+                ;; dataOffset i32ptr the memory offset to load data from (bytes)
+                (get_local $memValue)
+                ;; dataLength i32 the length of data
+                ;; attempt to overflow here
+                (i32.const 0xffffffff)
+              )
+            )
+
+            ;; nothing beyond here should execute
+
+            ;; store an arbitrary value, which we do not expect to get written
+            (call $storageStore (get_local $memStoragekey1) (get_local $memStorageval1))
+          )
+        )
+      nonce: ''
+      storage: {}
+  expect:
+    - indexes:
+        data: !!int -1
+        gas: !!int -1
+        value: !!int -1
+      network:
+        - ALL
+      result:
+        a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          balance: '99916113919'
+        abcdabcdabcdabcdabcdabcdabcdabcdabcdabcd:
+          # expect empty storage
+          storage: {}
+  transaction:
+    data: 
+    - ''
+    gasLimit:
+    - '0x5000001'
+    gasPrice: '0x01'
+    nonce: '0x00'
+    secretKey: 45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8
+    to: 'abcdabcdabcdabcdabcdabcdabcdabcdabcdabcd'
+    value:
+    - '0'
