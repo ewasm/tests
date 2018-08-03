@@ -1,0 +1,70 @@
+{
+    "createVeryLong" : {
+        "_info" : {
+            "comment" : "",
+            "filledwith" : "testeth 1.4.0rc0",
+            "lllcversion" : "Version: 0.4.20-develop.2018.1.14+commit.0c20b6da.Darwin.appleclang",
+            "source" : "src/GeneralStateTestsFiller/stEWASMTests/createVeryLongFiller.yml",
+            "sourceHash" : "dfee50465fdb35e1b6053344d68ea9c2401d6b61c6a7530d92c0286c235cacdc"
+        },
+        "env" : {
+            "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",
+            "currentDifficulty" : "0x020000",
+            "currentGasLimit" : "0x05500000",
+            "currentNumber" : "0x01",
+            "currentTimestamp" : "0x03e8",
+            "previousHash" : "0x5e20a0453cecd065ea59c37ac63e079ee08998b6045136a8ce6635c7912ec0b6"
+        },
+        "post" : {
+            "Byzantium" : [
+                {
+                    "hash" : "0xdc97ef12569b3670734979236ad1b3faf141bbaca2a83f47c8a8070edbccfd89",
+                    "indexes" : {
+                        "data" : 0,
+                        "gas" : 0,
+                        "value" : 0
+                    },
+                    "logs" : "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347"
+                }
+            ]
+        },
+        "pre" : {
+            "0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b" : {
+                "balance" : "0x174876e800",
+                "code" : "",
+                "nonce" : "0x00",
+                "storage" : {
+                }
+            },
+            "0xabcdabcdabcdabcdabcdabcdabcdabcdabcdabcd" : {
+                "balance" : "0x174876e800",
+                "code" : "0x0061736d01000000011c0560057e7f7f7f7f017f60027f7f006000017f60037f7f7f0060000002600408657468657265756d0463616c6c000008657468657265756d0c73746f7261676553746f7265000108657468657265756d1167657452657475726e4461746153697a65000208657468657265756d0e72657475726e44617461436f70790003030201040503010001071102066d656d6f72790200046d61696e00040a56015401077f410021004120210141e0002103418001210441a001210541e00121062004410036020020054101360200200342a08d0620002001200141011000360200200610023602002004200610012005200310010b0b1a010041000b1400000000000000000000000000000000efbeadde",
+                "nonce" : "0x00",
+                "storage" : {
+                }
+            },
+            "0xdeadbeef00000000000000000000000000000000" : {
+                "balance" : "0x174876e800",
+                "code" : "0x0061736d01000000010c0260047f7f7f7f017f60000002130108657468657265756d066372656174650000030201010503010001071102066d656d6f72790200046d61696e00010a0f010d0041004100417f410010001a0b",
+                "nonce" : "0x00",
+                "storage" : {
+                }
+            }
+        },
+        "transaction" : {
+            "data" : [
+                "0x"
+            ],
+            "gasLimit" : [
+                "0x5000001"
+            ],
+            "gasPrice" : "0x01",
+            "nonce" : "0x00",
+            "secretKey" : "0x45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8",
+            "to" : "0xabcdabcdabcdabcdabcdabcdabcdabcdabcdabcd",
+            "value" : [
+                "0x00"
+            ]
+        }
+    }
+}

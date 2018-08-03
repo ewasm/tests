@@ -1,5 +1,5 @@
-# Test OOB memory read in return call.
-returnVeryLong:
+# Test OOB memory read in create
+createVeryLong:
   env:
     currentCoinbase: 2adc25665018aa1fe0e6bc666dac8fc2697ff9ba
     currentDifficulty: '0x020000'
@@ -24,16 +24,18 @@ returnVeryLong:
           (export "memory" (memory 0))
           (export "main" (func $main))
           (func $main
-            (call $create
-              ;; value offset
-              (i32.const 0)
-              ;; data offset
-              (i32.const 0)
-              ;; data length
-              ;; overflow here
-              (i32.const 0xffffffff)
-              ;; result offset (new contract address)
-              (i32.const 0)
+            (drop
+              (call $create
+                ;; value offset
+                (i32.const 0)
+                ;; data offset
+                (i32.const 0)
+                ;; data length
+                ;; overflow here
+                (i32.const 0xffffffff)
+                ;; result offset (new contract address)
+                (i32.const 0)
+              )
             )
           )
         )
