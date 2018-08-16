@@ -1,0 +1,152 @@
+# Transaction to contract which creates a contract, but instead does a revert
+---
+createCodeWithRevert:
+  env:
+    currentCoinbase: 2adc25665018aa1fe0e6bc666dac8fc2697ff9ba
+    currentDifficulty: '0x020000'
+    currentGasLimit: '89128960'
+    currentNumber: '1'
+    currentTimestamp: '1000'
+    previousHash: 5e20a0453cecd065ea59c37ac63e079ee08998b6045136a8ce6635c7912ec0b6
+  pre:
+    a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+      balance: '100000000000'
+      code: ''
+      nonce: '0x4'
+      storage: {}
+    # WASM source for compiled code, below:
+    a000000000000000000000000000000000000001:
+      balance: '0'
+      nonce: ''
+      storage: {}
+      code: |
+        (module
+          (import "ethereum" "revert" (func $revert (param i32 i32)))
+          (memory 1)
+          (data (i32.const 512) "\be\ef")
+          (export "memory" (memory 0))
+          (export "main" (func $main))
+
+          (func $main
+            ;; locals
+            (local $memPointerCode i32)
+            (local $codeLen i32)
+
+            ;; memory, init
+            (set_local $memPointerCode (i32.const 512))
+            (set_local $codeLen (i32.const 2))
+
+            (call $revert
+              (i32.const 512) ;; dataOffset
+              (i32.const 2)   ;; dataLength
+            )
+          )
+        )
+    
+    deadbeef00000000000000000000000000000000:
+      balance: '100000000000'
+      nonce: ''
+      storage: {}
+      code: |
+        (module
+          (import "ethereum" "create" (func $create (param i32 i32 i32 i32) (result i32)))
+          (import "ethereum" "storageStore" (func $storageStore (param i32 i32)))
+          (import "ethereum" "getExternalCodeSize" (func $getExternalCodeSize (param i32) (result i32)))
+          (import "ethereum" "externalCodeCopy" (func $externalCodeCopy (param i32 i32 i32 i32)))
+          (memory 1)
+
+          ;; copy the code from this account
+          (data (i32.const 160) "\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\a0")
+
+          (export "memory" (memory 0))
+          (export "main" (func $main))
+
+          (func $main
+            ;; locals
+            (local $codeMemLoc i32)
+            (local $codeLen i32)
+            (local $address i32)
+            (local $memPointerStorageKey1 i32)
+            (local $memPointerStorageKey2 i32)
+            (local $memPointerCreateValue i32)
+            (local $memPointerCreateResult i32)
+
+            ;; Location and length of code stored in (data) section above
+            (set_local $codeMemLoc (i32.const 256))
+            (set_local $codeLen (i32.const 128))
+            (set_local $address (i32.const 160))
+
+            ;; memory layout and pointers
+            (set_local $memPointerStorageKey1 (i32.const 0))
+            (set_local $memPointerStorageKey2 (i32.const 32))
+            (set_local $memPointerCreateValue (i32.const 64))
+            (set_local $memPointerCreateResult (i32.const 96))
+
+            ;; initialize
+            (i32.store (get_local $memPointerStorageKey1) (i32.const 0))
+            (i32.store (get_local $memPointerStorageKey2) (i32.const 1))
+            ;; call create with value transfer 0
+            (i32.store (get_local $memPointerCreateValue) (i32.const 0))
+
+            ;; get external code
+            (i32.store (get_local $codeLen)
+              (call $getExternalCodeSize (get_local $address)))
+            (call $externalCodeCopy
+              (get_local $address)
+              (get_local $codeMemLoc)
+              (i32.const 0)
+              (i32.load (get_local $codeLen)))
+
+
+            ;; call CREATE and store the return success/failure value
+            (call $storageStore
+              (get_local $memPointerStorageKey1)
+              (call $create
+                ;; value offset
+                (get_local $memPointerCreateValue)
+                ;; data offset
+                (get_local $codeMemLoc)
+                ;; data length
+                (i32.load (get_local $codeLen))
+                ;; result offset (new contract address)
+                (get_local $memPointerCreateResult)
+              )
+            )
+
+            ;; store the result (new contract address)
+            (call $storageStore
+              (get_local $memPointerStorageKey2)
+              (get_local $memPointerCreateResult)
+            )
+          )
+        )
+  expect:
+    - indexes:
+        data: !!int -1
+        gas: !!int -1
+        value: !!int -1
+      network:
+        - ALL
+      result:
+        a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          balance: '99999922000'
+        deadbeef00000000000000000000000000000000:
+          storage: {
+            # Expect CREATE to return failure
+            # $memPointerStorageKey1 = 0
+            0: '0x01',
+            # $memPointerStorageKey2 = 1
+            1: '',
+          }
+
+  transaction:
+    data:
+    - '0x'
+    gasLimit:
+    - '0x6acfc0'
+    gasPrice: '0x01'
+    nonce: '0x04'
+    secretKey: "45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8"
+    to: 'deadbeef00000000000000000000000000000000'
+    value:
+    - '0'
