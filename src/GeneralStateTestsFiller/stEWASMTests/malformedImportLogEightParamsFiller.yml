@@ -1,0 +1,92 @@
+# malformed import test for log, using eight params
+---
+malformedImportLogEightParams:
+  env:
+    currentCoinbase: 2adc25665018aa1fe0e6bc666dac8fc2697ff9ba
+    currentDifficulty: '0x020000'
+    currentGasLimit: '89128960'
+    currentNumber: '1'
+    currentTimestamp: '1000'
+    previousHash: 5e20a0453cecd065ea59c37ac63e079ee08998b6045136a8ce6635c7912ec0b6
+  pre:
+    a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+      balance: '100000000000'
+      code: ''
+      nonce: '0'
+      storage: {}
+    b94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+      balance: '100000000000'
+      code: |
+        (module
+          (import "ethereum" "log" (func $log (param i32 i32 i32 i32 i32 i32 i32 i32)))
+          (import "ethereum" "storageStore" (func $storageStore (param i32 i32)))
+          (memory 1)
+          (export "main" (func $main))
+          (export "memory" (memory 0))
+          (func $main
+            (local $keyOffset i32)
+            (local $valOffset i32)
+            (local $dataOffset i32)
+            (local $length i32)
+            (local $topics i32)
+            (local $topic1 i32)
+            (local $topic2 i32)
+            (local $topic3 i32)
+            (local $topic4 i32)
+            (local $invalidParam i32)
+            
+            (set_local $keyOffset (i32.const 0))
+            (set_local $valOffset (i32.const 32))
+            (set_local $dataOffset (i32.const 64))
+
+            (set_local $length (i32.const 3))
+            (set_local $topics (i32.const 4))
+            (set_local $topic1 (i32.const 0))
+            (set_local $topic2 (i32.const 0))
+            (set_local $topic3 (i32.const 0))
+            (set_local $topic4 (i32.const 0))
+            (set_local $invalidParam (i32.const 0))
+            
+            (i32.store (get_local $keyOffset) (i32.const 0)) ;; key 0
+            (i32.store (get_local $valOffset) (i32.const 1)) ;; value 1
+
+            (call $log (get_local $dataOffset)
+                       (get_local $length)
+                       (get_local $topics)
+                       (get_local $topic1)
+                       (get_local $topic2)
+                       (get_local $topic3)
+                       (get_local $topic4)
+                       (get_local $invalidParam))
+            
+            ;; this storageStore should not be called because of the previous exception
+            (call $storageStore (get_local $keyOffset) (get_local $valOffset))))
+      nonce: ''
+      storage: {
+        0: "0x00"
+      }
+  expect:
+    - indexes:
+        data: !!int -1
+        gas:  !!int -1
+        value: !!int -1
+      network:
+        - ALL
+      result:
+        a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          balance: '100000000000'
+        b94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          storage: {
+            0: '0x00'         # should not store anything here since log fails prior to the correct storageStore execution
+          }
+  transaction:
+    data:
+    - '0xabcdef'
+    gasLimit:
+    - '0x5000001'
+    gasPrice: '0x01'
+    nonce: '0x00'
+    secretKey: 45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8
+    to: 'b94f5374fce5edbc8e2a8697c15331677e6ebf0b'
+    value:
+    - '10'

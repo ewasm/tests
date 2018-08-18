@@ -1,0 +1,94 @@
+# malformed import test for callCode, using four params
+---
+malformedImportCallCodeFourParams:
+  env:
+    currentCoinbase: 2adc25665018aa1fe0e6bc666dac8fc2697ff9ba
+    currentDifficulty: '0x020000'
+    currentGasLimit: '89128960'
+    currentNumber: '1'
+    currentTimestamp: '1000'
+    previousHash: 5e20a0453cecd065ea59c37ac63e079ee08998b6045136a8ce6635c7912ec0b6
+  pre:
+    a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+      balance: '100000000000'
+      code: ''
+      nonce: '0'
+      storage: {}
+    b94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+      balance: '100000000000'
+      code: |
+        (module
+          (import "ethereum" "storageStore" (func $storageStore (param i32 i32)))
+          (import "ethereum" "callCode"   (func $callCode (param i64 i32 i32 i32)))
+          (memory 1)
+          (data (i32.const 64) "\01\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\ef\be\ad\de")
+          (data (i32.const 128) "\ab\cd\ef")
+          (export "main" (func $main))
+          (export "memory" (memory 0))
+          (func $main
+            (local $keyOffset i32)
+            (local $valOffset i32)
+            (local $addrOffset i32)
+            (local $valueOffset i32)
+            (local $dataOffset i32)
+
+            (set_local $dataOffset  (i32.const 128))
+            (set_local $valueOffset (i32.const 96))
+            (set_local $addrOffset  (i32.const 64))
+            (set_local $valOffset   (i32.const 32))
+            (set_local $keyOffset   (i32.const 0))
+
+            (i32.store (get_local $valOffset) (i32.const 1))    ;; storage value
+            (i32.store (get_local $valueOffset) (i32.const 10)) ;; value to send in callCode
+
+            (call $callCode (i64.const 200000) (get_local $addrOffset) (get_local $valueOffset) (get_local $dataOffset))
+
+            ;; the following function call should not be executed since callCode fails
+            (call $storageStore (get_local $keyOffset) (get_local $valOffset)))) ;; try to store value 1 in key 0
+      nonce: ''
+      storage: {}
+    deadbeef00000000000000000000000000000001:
+      balance: '100000000000'
+      code: |
+        (module
+          (import "ethereum" "storageStore" (func $storageStore (param i32 i32)))
+          (memory 1)
+          (export "main" (func $main))
+          (export "memory" (memory 0))
+          (func $main
+            (local $keyOffset i32)
+            (local $valOffset i32)
+
+            (set_local $keyOffset (i32.const 0))
+            (set_local $valOffset (i32.const 32))
+
+            (i32.store (get_local $keyOffset) (i32.const 1))   ;; key 0
+            (i32.store (get_lcoal $valOffset) (i32.const 2)))) ;; value 2
+      nonce: ''
+      storage: {}
+  expect:
+    - indexes:
+        data: !!int -1
+        gas:  !!int -1
+        value: !!int -1
+      network:
+        - ALL
+      result:
+        a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          balance: '100000000000'
+        b94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          storage: {
+            0: '0x0', # should not store anything here since callCode fails prior to storageStore execution
+            1: '0x0'  # this storage slot is not changed since callCode is not successful
+          }
+  transaction:
+    data:
+    - ''
+    gasLimit:
+    - '0x5000001'
+    gasPrice: '0x01'
+    nonce: '0x00'
+    secretKey: 45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8
+    to: 'b94f5374fce5edbc8e2a8697c15331677e6ebf0b'
+    value:
+    - '0'

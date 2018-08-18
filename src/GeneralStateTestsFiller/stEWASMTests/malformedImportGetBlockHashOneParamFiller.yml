@@ -1,0 +1,69 @@
+# malformed import test for getBlockHash - trying using 1 parameter
+---
+malformedImportGetBlockHashOneParam:
+  env:
+    currentCoinbase: 2adc25665018aa1fe0e6bc666dac8fc2697ff9ba
+    currentDifficulty: '0x020000'
+    currentGasLimit: '89128960'
+    currentNumber: '1'
+    currentTimestamp: '1000'
+    previousHash: 5e20a0453cecd065ea59c37ac63e079ee08998b6045136a8ce6635c7912ec0b6
+  pre:
+    a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+      balance: '100000000000'
+      code: ''
+      nonce: '0'
+      storage: {}
+    b94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+      balance: '100000000000'
+      code: |
+        (module
+          (import "ethereum" "storageStore" (func $storageStore (param i32 i32)))
+          (import "ethereum" "getBlockHash" (func $getBlockHash (param i64)))
+          (memory 1)
+          (export "main" (func $main))
+          (export "memory" (memory 0))
+          (func $main
+            (local $keyOffset i32)
+            (local $valOffset i32)
+
+            (set_local $keyOffset (i32.const 0))
+            (set_local $valOffset (i32.const 32))
+
+            (i32.store (get_local $keyOffset) (i32.const 0)) ;; set key = 0
+            (i32.store (get_local $valOffset) (i32.const 1)) ;; set value = 1
+            
+            ;; try to load block 0, there is no return offset and no result offset
+            (call $getBlockHash (i64.const 0))
+
+            ;; try to store the value 1 in storage position 0
+            ;; this should not work because blockhash should throw an InternalError
+            (call $storageStore (get_local $keyOffset) (get_local $valOffset))))
+      nonce: ''
+      storage: {}
+  expect:
+    - indexes:
+        data: !!int -1
+        gas: !!int -1
+        value: !!int -1
+      network:
+        - ALL
+      result:
+        a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          balance: '100000000000'
+        b94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          storage: {
+            0: '0x0' # expect nothing stored here
+          }
+  transaction:
+    data:
+    - ''
+    gasLimit:
+    - '0x5000001'
+    gasPrice: '0x01'
+    nonce: '0x00'
+    secretKey: 45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8
+    to: 'b94f5374fce5edbc8e2a8697c15331677e6ebf0b'
+    value:
+    - '0'
+  
