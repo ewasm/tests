@@ -1,0 +1,63 @@
+{
+    "malformedImportGetBlockHashOneParam" : {
+        "_info" : {
+            "comment" : "",
+            "filledwith" : "testeth 1.5.0-alpha.6",
+            "lllcversion" : "Version: 0.5.0-develop.2018.11.8+commit.20481055.Linux.g++",
+            "source" : "src/GeneralStateTestsFiller/stEWASMTests/malformedImportGetBlockHashOneParamFiller.yml",
+            "sourceHash" : "15d1624f6364f11ec595325e5166a137915b7e92dc4a369018be9796efbf0bca"
+        },
+        "env" : {
+            "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",
+            "currentDifficulty" : "0x020000",
+            "currentGasLimit" : "0x05500000",
+            "currentNumber" : "0x01",
+            "currentTimestamp" : "0x03e8",
+            "previousHash" : "0x5e20a0453cecd065ea59c37ac63e079ee08998b6045136a8ce6635c7912ec0b6"
+        },
+        "post" : {
+            "Byzantium" : [
+                {
+                    "hash" : "0xb17f7ae82e4534a207813312a8d53f1472255ad1e77ae48a0ba840beec09411f",
+                    "indexes" : {
+                        "data" : 0,
+                        "gas" : 0,
+                        "value" : 0
+                    },
+                    "logs" : "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347"
+                }
+            ]
+        },
+        "pre" : {
+            "0xa94f5374fce5edbc8e2a8697c15331677e6ebf0b" : {
+                "balance" : "0x174876e800",
+                "code" : "",
+                "nonce" : "0x00",
+                "storage" : {
+                }
+            },
+            "0xb94f5374fce5edbc8e2a8697c15331677e6ebf0b" : {
+                "balance" : "0x174876e800",
+                "code" : "0x0061736d01000000010d0360027f7f0060017e0060000002310208657468657265756d0c73746f7261676553746f7265000008657468657265756d0c676574426c6f636b486173680001030201020503010001071102046d61696e0002066d656d6f727902000a1f011d01027f410021004120210120014101360200420010012000200110000b0b26010041000b200000000000000000000000000000000000000000000000000000000000000000",
+                "nonce" : "0x00",
+                "storage" : {
+                }
+            }
+        },
+        "transaction" : {
+            "data" : [
+                "0x"
+            ],
+            "gasLimit" : [
+                "0x5000001"
+            ],
+            "gasPrice" : "0x01",
+            "nonce" : "0x00",
+            "secretKey" : "0x45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8",
+            "to" : "0xb94f5374fce5edbc8e2a8697c15331677e6ebf0b",
+            "value" : [
+                "0x00"
+            ]
+        }
+    }
+}
