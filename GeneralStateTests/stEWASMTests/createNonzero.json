@@ -2,10 +2,10 @@
     "createNonzero" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "testeth 1.5.0-alpha.4",
-            "lllcversion" : "Version: 0.4.20-develop.2017.12.3+commit.4cad0b22.Linux.g++",
+            "filledwith" : "testeth 1.5.0-alpha.6",
+            "lllcversion" : "Version: 0.5.0-develop.2018.11.8+commit.20481055.Linux.g++",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/createNonzeroFiller.yml",
-            "sourceHash" : "840b78fcaa7ef00c4d69aff573318d331073774b6d5e629499df316b6b9893ad"
+            "sourceHash" : "18a98ebb2c79b2a1e50c3db61426af2bfe175966774eac83ae888a6ebe85e2ae"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",

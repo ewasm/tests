@@ -2,10 +2,10 @@
     "logZeroLengthMemory" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "testeth 1.5.0-alpha.4",
-            "lllcversion" : "Version: 0.4.20-develop.2017.12.3+commit.4cad0b22.Linux.g++",
+            "filledwith" : "testeth 1.5.0-alpha.6",
+            "lllcversion" : "Version: 0.5.0-develop.2018.11.8+commit.20481055.Linux.g++",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/logZeroLengthMemoryFiller.yml",
-            "sourceHash" : "26004b9834375cf5652b5327e3fe4c192816d14db829216d9c8dca6f39babb43"
+            "sourceHash" : "f0ec04c0e2ba8855c5ce0b820592d361315849886057d254075ec156f7d7df8b"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",

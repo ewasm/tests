@@ -2,10 +2,10 @@
     "getBalanceExt" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "testeth 1.5.0-alpha.4",
-            "lllcversion" : "Version: 0.4.20-develop.2017.12.3+commit.4cad0b22.Linux.g++",
+            "filledwith" : "testeth 1.5.0-alpha.6",
+            "lllcversion" : "Version: 0.5.0-develop.2018.11.8+commit.20481055.Linux.g++",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/getBalanceExtFiller.yml",
-            "sourceHash" : "1e492cd2db23b3afd5de10e8cc72532e59d0ddfca44e37ef84d4d3905dfc691f"
+            "sourceHash" : "4ba79d0faa217fd32a2285550536f3840c256f300bb7607a22ffc38ee8c8973a"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",

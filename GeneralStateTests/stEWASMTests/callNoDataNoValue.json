@@ -2,10 +2,10 @@
     "callNoDataNoValue" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "testeth 1.5.0-alpha.4",
-            "lllcversion" : "Version: 0.4.20-develop.2017.12.3+commit.4cad0b22.Linux.g++",
+            "filledwith" : "testeth 1.5.0-alpha.6",
+            "lllcversion" : "Version: 0.5.0-develop.2018.11.8+commit.20481055.Linux.g++",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/callNoDataNoValueFiller.yml",
-            "sourceHash" : "fd3497f9331542915626cc9674aad317c7ca3ed54324585c56c613ce4db38115"
+            "sourceHash" : "29254640b871ca2c28a15440bc647650dec80dea4d971526c468829ce34d75bb"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",

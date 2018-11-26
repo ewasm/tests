@@ -2,10 +2,10 @@
     "getTxGasPrice" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "testeth 1.5.0-alpha.4",
-            "lllcversion" : "Version: 0.4.20-develop.2017.12.3+commit.4cad0b22.Linux.g++",
+            "filledwith" : "testeth 1.5.0-alpha.6",
+            "lllcversion" : "Version: 0.5.0-develop.2018.11.8+commit.20481055.Linux.g++",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/getTxGasPriceFiller.yml",
-            "sourceHash" : "d80b701f27ef3e074c6ce8ee993bbf3f0eb69e362272237560ebaaa123420be3"
+            "sourceHash" : "b5a2d8901718085d42f1fd2e6160cf532d935fa9ffdc6c8dde75f8177d5f36c7"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",

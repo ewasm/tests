@@ -21,7 +21,7 @@ createFromTransactionExceedGasLimit:
         gas: !!int -1
         value: !!int -1
       network:
-        - ALL
+        - "Byzantium"
       result:
         # contract creation requires:     4972816 (0x4be110)
         # gasLimit is set as:             4972815 (0x4be10f)

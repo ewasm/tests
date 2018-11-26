@@ -2,10 +2,10 @@
     "create" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "testeth 1.5.0-alpha.4",
-            "lllcversion" : "Version: 0.4.20-develop.2017.12.3+commit.4cad0b22.Linux.g++",
+            "filledwith" : "testeth 1.5.0-alpha.6",
+            "lllcversion" : "Version: 0.5.0-develop.2018.11.8+commit.20481055.Linux.g++",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/createFiller.yml",
-            "sourceHash" : "222916a002ae62a29aa78b70e14953114132aacb2ecf0c4945ac129e66d3d15b"
+            "sourceHash" : "6141eb8e3ffaf2d6e09fe0df2f7dbd7b9b29376fd8a7a6007d7a96dd89a6afa9"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",

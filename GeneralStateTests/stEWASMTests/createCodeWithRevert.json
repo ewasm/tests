@@ -2,10 +2,10 @@
     "createCodeWithRevert" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "testeth 1.5.0-alpha.4",
-            "lllcversion" : "Version: 0.4.20-develop.2017.12.3+commit.4cad0b22.Linux.g++",
+            "filledwith" : "testeth 1.5.0-alpha.6",
+            "lllcversion" : "Version: 0.5.0-develop.2018.11.8+commit.20481055.Linux.g++",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/createCodeWithRevertFiller.yml",
-            "sourceHash" : "4696630dfc2699cfa21cfd5eb914238535991cdfbe7acacbac7ab698ead2f4db"
+            "sourceHash" : "c1b5ef5f6343925d9862487bbe8a74f82731effc9129ad5a894f4f3a392c4712"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",

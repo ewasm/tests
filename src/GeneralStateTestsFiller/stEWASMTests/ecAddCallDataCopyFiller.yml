@@ -27334,7 +27334,7 @@ ecAddCallDataCopy:
         gas: !!int -1
         value: !!int -1
       network:
-        - ALL
+        - "Byzantium"
       result:
         # InitialBalance (non-zero) (zero-data)   calldatacopy               sstore  txCost 
         # 100000000000  +(4 * 68)  +(124 * 4)   + 3 + 3 * ((128 + 31) / 32) +20000  + 21000 = 99999958217

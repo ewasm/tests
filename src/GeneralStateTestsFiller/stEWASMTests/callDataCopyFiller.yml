@@ -44,7 +44,7 @@ callDataCopy:
         gas: !!int -1
         value: !!int -1
       network:
-        - ALL
+        - "Byzantium"
       result:
         # initialBalance   ( VERYLOW + COPY*ceil(len/32)         SSTORE  txCost   (datalen*63)
         # 100000000000   - ( 3       + 3   *ceil(2  /32)       - 20000 - 21000  - (2      *63) = 99999958858

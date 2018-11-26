@@ -2,10 +2,10 @@
     "callStaticVeryLong" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "testeth 1.5.0-alpha.4",
-            "lllcversion" : "Version: 0.4.20-develop.2017.12.3+commit.4cad0b22.Linux.g++",
+            "filledwith" : "testeth 1.5.0-alpha.6",
+            "lllcversion" : "Version: 0.5.0-develop.2018.11.8+commit.20481055.Linux.g++",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/callStaticVeryLongFiller.yml",
-            "sourceHash" : "7630de44fb343d368b45b4b82cc7af6983c88f8a750961a0026d3b8dea5f334d"
+            "sourceHash" : "e477f39da9a1bdca4969dcf2e708d4f13ff247f15d087c0060a6f60a74e9ae87"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",

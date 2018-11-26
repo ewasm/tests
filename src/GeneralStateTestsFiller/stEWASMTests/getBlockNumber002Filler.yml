@@ -34,7 +34,7 @@ getBlockNumber002:
         gas: !!int -1
         value: !!int -1
       network:
-        - ALL
+        - "Byzantium"
       result:
         # InitialBalance NUMBER   SSTORE   TXCOST  FinalBalance
         # 100000000000 - 2      - 20000  - 21000 = 99999958998        

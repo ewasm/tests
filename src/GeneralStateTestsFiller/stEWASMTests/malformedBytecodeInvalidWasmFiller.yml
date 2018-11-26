@@ -28,7 +28,7 @@ malformedBytecodeInvalidWasm:
         gas:  !!int -1
         value: !!int -1
       network:
-        - ALL
+        - "Byzantium"
       result:
         # initialBalance - OOG (Consume all gas) = finalBalance
         # 100000000000   - 83886081 (0x5000001)  = 99916113919

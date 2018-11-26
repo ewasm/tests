@@ -36,7 +36,7 @@ getGasLeft:
         gas: !!int -1
         value: !!int -1
       network:
-        - ALL
+        - "Byzantium"
       result:
         # initialBalance - getGasLeft  - useGas  - txCost - sstore
         # 100000000000   - 2           - 1000000 - 21000  - 20000  = 99998958998

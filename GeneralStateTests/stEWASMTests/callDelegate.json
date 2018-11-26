@@ -2,10 +2,10 @@
     "callDelegate" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "testeth 1.5.0-alpha.4",
-            "lllcversion" : "Version: 0.4.20-develop.2017.12.3+commit.4cad0b22.Linux.g++",
+            "filledwith" : "testeth 1.5.0-alpha.6",
+            "lllcversion" : "Version: 0.5.0-develop.2018.11.8+commit.20481055.Linux.g++",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/callDelegateFiller.yml",
-            "sourceHash" : "ba383e56d5f2c14597b354a5341e0576ace7eec9847d86c350f3c28d7617a4ad"
+            "sourceHash" : "38a09c789b04a019a7df2a3f1629923b86a7487453558b28e8b98027ec25346a"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",

@@ -2,10 +2,10 @@
     "returnPredefinedData" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "testeth 1.5.0-alpha.4",
-            "lllcversion" : "Version: 0.4.20-develop.2017.12.3+commit.4cad0b22.Linux.g++",
+            "filledwith" : "testeth 1.5.0-alpha.6",
+            "lllcversion" : "Version: 0.5.0-develop.2018.11.8+commit.20481055.Linux.g++",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/returnPredefinedDataFiller.yml",
-            "sourceHash" : "d4b67556e7067a8116a5e6e0fd34715e9a74672da40aa9f192ccbe84bb5f25a6"
+            "sourceHash" : "1c5dddce33863eef88b586b59f9bb16dbbcee5c3e391224de5d3e375a8355291"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",

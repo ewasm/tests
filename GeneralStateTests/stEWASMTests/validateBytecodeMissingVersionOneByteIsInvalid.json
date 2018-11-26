@@ -2,10 +2,10 @@
     "validateBytecodeMissingVersionOneByteIsInvalid" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "testeth 1.5.0-alpha.4",
-            "lllcversion" : "Version: 0.4.20-develop.2017.12.3+commit.4cad0b22.Linux.g++",
+            "filledwith" : "testeth 1.5.0-alpha.6",
+            "lllcversion" : "Version: 0.5.0-develop.2018.11.8+commit.20481055.Linux.g++",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/validateBytecodeMissingVersionOneByteIsInvalidFiller.yml",
-            "sourceHash" : "907cd966284442aaf998081a8f776318d8ea02d1dec3d7ce52ca8c2d0ae3db32"
+            "sourceHash" : "3e17254c5198b821feb26c3b03e54cb4f5aa71a1f977b937455748542d120c72"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",

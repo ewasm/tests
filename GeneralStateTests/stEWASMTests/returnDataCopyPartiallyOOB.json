@@ -2,10 +2,10 @@
     "returnDataCopyPartiallyOOB" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "testeth 1.5.0-alpha.4",
-            "lllcversion" : "Version: 0.4.20-develop.2017.12.3+commit.4cad0b22.Linux.g++",
+            "filledwith" : "testeth 1.5.0-alpha.6",
+            "lllcversion" : "Version: 0.5.0-develop.2018.11.8+commit.20481055.Linux.g++",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/returnDataCopyPartiallyOOBFiller.yml",
-            "sourceHash" : "6d76c576c2638ccd1b5d044082173aba4433e3cd43883536c1b90f0b3b7a4181"
+            "sourceHash" : "23cb4aeaf79bc270d6e7e345c6f29e633f2e06fdff495eebf7bea75ecb087ee6"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",

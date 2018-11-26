@@ -36,7 +36,7 @@ useGas:
         gas: !!int -1
         value: !!int -1
       network:
-        - ALL 
+        - "Byzantium" 
       result:
         # InitialBalance - useGas - TXCOST = FinalBalance
         # 100000000000   - 1000     21000  = 99999978000

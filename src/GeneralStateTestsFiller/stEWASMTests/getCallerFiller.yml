@@ -34,7 +34,7 @@ getCaller:
         gas: !!int -1
         value: !!int -1
       network:
-        - ALL
+        - "Byzantium"
       result:
         # getCaller:        2
         # storageStore: 20000

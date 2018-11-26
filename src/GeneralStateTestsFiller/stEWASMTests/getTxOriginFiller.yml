@@ -35,7 +35,7 @@ getTxOrigin:
         gas: !!int -1
         value: !!int -1
       network:
-        - ALL
+        - "Byzantium"
       result:
         # initialBalance ORIGIN   SSTORE  dataCost  txCost
         # 100000000000   - 2    - 20000   - 136     - 21000 = 99999958862

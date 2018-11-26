@@ -2,10 +2,10 @@
     "useGas" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "testeth 1.5.0-alpha.4",
-            "lllcversion" : "Version: 0.4.20-develop.2017.12.3+commit.4cad0b22.Linux.g++",
+            "filledwith" : "testeth 1.5.0-alpha.6",
+            "lllcversion" : "Version: 0.5.0-develop.2018.11.8+commit.20481055.Linux.g++",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/useGasFiller.yml",
-            "sourceHash" : "0a762786b0f142b99db4a6697e7aee25cc5ccd4e9efe341df65f1c041bbc6419"
+            "sourceHash" : "71d0d67a203d454848e12cdb67303b12738d07f5a34a1e1ae23e74729bc1512c"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",

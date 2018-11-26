@@ -56,7 +56,7 @@ getBlockHashFailure:
         gas: !!int -1
         value: !!int -1
       network:
-        - ALL
+        - "Byzantium"
       result:
         # getBlockHash:    800
         # storageStore:  20000 (zero)

@@ -228,7 +228,7 @@ expect:
     gas: !!int -1
     value: !!int -1
   network:
-    - ALL
+    - "Byzantium"
   result:
     # InitialBalance - contract1.call - valueTransfer - txCost - contract2.calldatasize - contract2.sstore
     # 100000000000   - 700            - 9000          - 21000  - 2                      - 20000            = 99999949298

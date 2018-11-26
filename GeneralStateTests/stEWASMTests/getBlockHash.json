@@ -2,10 +2,10 @@
     "getBlockHash" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "testeth 1.5.0-alpha.4",
-            "lllcversion" : "Version: 0.4.20-develop.2017.12.3+commit.4cad0b22.Linux.g++",
+            "filledwith" : "testeth 1.5.0-alpha.6",
+            "lllcversion" : "Version: 0.5.0-develop.2018.11.8+commit.20481055.Linux.g++",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/getBlockHashFiller.yml",
-            "sourceHash" : "bc68fcbc6fedf259313a49f66db7a07ad984021464fd5594c5a03b39caaad0c1"
+            "sourceHash" : "31c2237a892510a17f00a5b3885803affb29ac954b14b84a241ca3ab85d98bea"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",

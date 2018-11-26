@@ -101,7 +101,7 @@ createNotEnoughBalance:
         gas: !!int -1
         value: !!int -1
       network:
-        - ALL
+        - "Byzantium"
       result:
         # initialBalance - getExternalCodeSize - externalCodeCopy - create - txCost
         # 100000000000   - 700                 - 718              - 32000  - 21000  = 99999945582

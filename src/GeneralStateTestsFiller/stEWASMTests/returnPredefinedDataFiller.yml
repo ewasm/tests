@@ -19,7 +19,7 @@ returnPredefinedData:
         gas: !!int -1
         value: !!int -1
       network:
-        - ALL
+        - "Byzantium"
       result:
         # newly-created contract
         6295ee1b4f6dd65047762f924ecd367c17eabf8f:

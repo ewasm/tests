@@ -80,7 +80,7 @@ callCode:
         gas: !!int -1
         value: !!int -1
       network:
-        - ALL
+        - "Byzantium"
       result:
         # initialBalance CODE   SSTORE(0xabcd)  SSTORE(0x00) txCost
         # 100000000000 - 700  - 20000          - 5000        - 21000 = 99999953300

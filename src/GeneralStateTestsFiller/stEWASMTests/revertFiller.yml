@@ -146,7 +146,7 @@ revert:
         gas: !!int -1
         value: !!int -1
       network:
-        - ALL
+        - "Byzantium"
       result:
         # initialBalance - c1.call - c1.sstore - c1.grds - c1.sstore - c1.grds - c1.rdc - c1.sstore - c2.sstore - c2.revert - txCost
         # 100000000000   - 700     - 20000     - 2       - 20000     - 2       - 6      - 20000     - 20000     - 0         - 21000 = 99999898290

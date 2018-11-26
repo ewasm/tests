@@ -2,10 +2,10 @@
     "callData" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "testeth 1.5.0-alpha.4",
-            "lllcversion" : "Version: 0.4.20-develop.2017.12.3+commit.4cad0b22.Linux.g++",
+            "filledwith" : "testeth 1.5.0-alpha.6",
+            "lllcversion" : "Version: 0.5.0-develop.2018.11.8+commit.20481055.Linux.g++",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/callDataFiller.yml",
-            "sourceHash" : "4befdb1b7912b097db79515c6172b5c5e0a644d2ff4a5575710389c285da4f8f"
+            "sourceHash" : "25df5d221f20eeeb4df921ceef94f6d10583293fa150842600598deb42f0b963"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",

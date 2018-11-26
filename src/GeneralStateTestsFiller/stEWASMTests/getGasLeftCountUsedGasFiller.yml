@@ -49,7 +49,7 @@ getGasLeftCountUsedGas:
         gas: !!int -1
         value: !!int -1
       network:
-        - ALL
+        - "Byzantium"
       result:
         # initialBalance - getAddress - getBalance getGasLeft - txCost
         # 100000000000   - 2            400        - 2        - 21000  = 99999958596

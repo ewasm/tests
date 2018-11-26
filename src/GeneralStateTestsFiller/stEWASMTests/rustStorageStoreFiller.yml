@@ -84,7 +84,7 @@ rustStorageStore:
         gas: !!int -1
         value: !!int -1
       network:
-        - ALL
+        - "Byzantium"
       result:
         # InitialBalance - sstore - txcost 
         # 100000000000   - 20000  - 21000  = 

@@ -47,7 +47,7 @@ getExternalCodeSize:
         gas: !!int -1
         value: !!int -1
       network:
-        - ALL
+        - "Byzantium"
       result:
         # InitialBalance - EXTCODESIZE - SSTORE - TXCOST  = FinalBalance
         # 100000000000   - 700         - 20000  - 21000   = 99999958300

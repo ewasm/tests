@@ -98,7 +98,7 @@ getAddressRust:
         gas: !!int -1
         value: !!int -1
       network:
-        - ALL
+        - "Byzantium"
       result:
         # Balance        ADDRESS   SSTORE   TXCOST
         # 100000000000 - 2       - 20000  - 21000   = 99999958998        

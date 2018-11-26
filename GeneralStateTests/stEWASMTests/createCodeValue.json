@@ -2,10 +2,10 @@
     "createCodeValue" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "testeth 1.5.0-alpha.4",
-            "lllcversion" : "Version: 0.4.20-develop.2017.12.3+commit.4cad0b22.Linux.g++",
+            "filledwith" : "testeth 1.5.0-alpha.6",
+            "lllcversion" : "Version: 0.5.0-develop.2018.11.8+commit.20481055.Linux.g++",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/createCodeValueFiller.yml",
-            "sourceHash" : "6f7ac3135cc812f99e7b6c1215d65c2663fb8a88e32f7b8c5b409761024cd290"
+            "sourceHash" : "0f7676fa48445b139dbe82566fe6c0542f583c289bf697f454ee6fe4641d2586"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",

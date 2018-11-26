@@ -41,7 +41,7 @@ getBalanceExt:
         gas: !!int -1
         value: !!int -1
       network:
-        - ALL
+        - "Byzantium"
       result:
         # InitialBalance - BALANCE - SSTORE - TXCOST
         # 100000000000   - 400     - 20000  - 21000  = 99999958600

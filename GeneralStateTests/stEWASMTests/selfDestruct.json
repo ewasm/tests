@@ -2,10 +2,10 @@
     "selfDestruct" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "testeth 1.5.0-alpha.4",
-            "lllcversion" : "Version: 0.4.20-develop.2017.12.3+commit.4cad0b22.Linux.g++",
+            "filledwith" : "testeth 1.5.0-alpha.6",
+            "lllcversion" : "Version: 0.5.0-develop.2018.11.8+commit.20481055.Linux.g++",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/selfDestructFiller.yml",
-            "sourceHash" : "3f26c128ea585ca4148742393b8441456deef8429ec6ccd8bc905745f12a138b"
+            "sourceHash" : "233961fb3e52c88010fb231a9960bc490c7f80f963da9d5aa684789a25656733"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",

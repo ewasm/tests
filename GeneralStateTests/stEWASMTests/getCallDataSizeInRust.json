@@ -2,10 +2,10 @@
     "getCallDataSizeInRust" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "testeth 1.5.0-alpha.4",
-            "lllcversion" : "Version: 0.4.20-develop.2017.12.3+commit.4cad0b22.Linux.g++",
+            "filledwith" : "testeth 1.5.0-alpha.6",
+            "lllcversion" : "Version: 0.5.0-develop.2018.11.8+commit.20481055.Linux.g++",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/getCallDataSizeInRustFiller.yml",
-            "sourceHash" : "bedb2f650935889d4f8deda92148a625dc24003202bd68750c9534b61500bffb"
+            "sourceHash" : "43684e9bae3ec69837a43e07deb58b578a2bb07dbb39097772460b1955682b59"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",

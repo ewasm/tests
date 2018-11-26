@@ -2,10 +2,10 @@
     "getExternalCodeSize" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "testeth 1.5.0-alpha.4",
-            "lllcversion" : "Version: 0.4.20-develop.2017.12.3+commit.4cad0b22.Linux.g++",
+            "filledwith" : "testeth 1.5.0-alpha.6",
+            "lllcversion" : "Version: 0.5.0-develop.2018.11.8+commit.20481055.Linux.g++",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/getExternalCodeSizeFiller.yml",
-            "sourceHash" : "7c93ac97443a8da755d3ab5eeb7147bc00f5cf31ff81bf06d7d33691afc78f53"
+            "sourceHash" : "87f5f7a6b7b31f968709158509c8ef258affebf0d680066ad4b03f80e6ce03f3"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",

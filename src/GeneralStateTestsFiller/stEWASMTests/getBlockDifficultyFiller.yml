@@ -33,7 +33,7 @@ getBlockDifficulty:
         gas: !!int -1
         value: !!int -1
       network:
-        - ALL
+        - "Byzantium"
       result:
         # getBlockDifficulty:      2
         # storageStore:        20000

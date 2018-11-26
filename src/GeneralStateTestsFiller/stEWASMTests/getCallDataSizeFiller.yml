@@ -32,7 +32,7 @@ getCallDataSize:
         gas: !!int -1
         value: !!int -1
       network:
-        - ALL
+        - "Byzantium"
       result:
         # CALLDATASIZE + SSTORE + (Non-Zero bytes costs 68 * 16) + TXCOST
         # 2            + 20000  + 1088                           + 21000

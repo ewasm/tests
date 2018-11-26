@@ -2,10 +2,10 @@
     "callDepth" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "testeth 1.5.0-alpha.4",
-            "lllcversion" : "Version: 0.4.20-develop.2017.12.3+commit.4cad0b22.Linux.g++",
+            "filledwith" : "testeth 1.5.0-alpha.6",
+            "lllcversion" : "Version: 0.5.0-develop.2018.11.8+commit.20481055.Linux.g++",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/callDepthFiller.yml",
-            "sourceHash" : "13751dc847895f218bc8eb1b0556b0fbf2c8ae04ad4495811f89c227d50cc3cc"
+            "sourceHash" : "59566c59ccf7f2ebc71ac1378ba9d70e2eaec00f698a4d016a7a7f400c30b180"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",

@@ -2,10 +2,10 @@
     "validateBytecodeInvalidImportIsInvalid" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "testeth 1.5.0-alpha.4",
-            "lllcversion" : "Version: 0.4.20-develop.2017.12.3+commit.4cad0b22.Linux.g++",
+            "filledwith" : "testeth 1.5.0-alpha.6",
+            "lllcversion" : "Version: 0.5.0-develop.2018.11.8+commit.20481055.Linux.g++",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/validateBytecodeInvalidImportIsInvalidFiller.yml",
-            "sourceHash" : "83f7b2d2d535fe1baabfe328d87a49397aac284cdf1c1ea451097d59a97cbadd"
+            "sourceHash" : "2158df3d842e575c98da0d298b0abd7fb3dd0388183f674f8c024c9d93215d51"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",

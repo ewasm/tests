@@ -2,10 +2,10 @@
     "codeCopy" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "testeth 1.5.0-alpha.4",
-            "lllcversion" : "Version: 0.4.20-develop.2017.12.3+commit.4cad0b22.Linux.g++",
+            "filledwith" : "testeth 1.5.0-alpha.6",
+            "lllcversion" : "Version: 0.5.0-develop.2018.11.8+commit.20481055.Linux.g++",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/codeCopyFiller.yml",
-            "sourceHash" : "67b259d1cb0bb9bf92b4022b65900039827b6bed415cb4a43a8ce8794042bf6b"
+            "sourceHash" : "3ea8fdc659bc8f2a8a609a1085b4fff55eb5560021874824a68abaff33e8583c"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",

@@ -21,7 +21,7 @@ createFromTransactionReturnRandomBytes:
         gas: !!int -1
         value: !!int -1
       network:
-        - ALL
+        - "Byzantium"
       result:
         # initialBalance - createGas - dataCost - createData
         # 100000000000   - 53000     - 22508     - 51200      = 99999873292

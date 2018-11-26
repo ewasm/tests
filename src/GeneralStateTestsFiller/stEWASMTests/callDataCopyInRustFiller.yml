@@ -99,7 +99,7 @@ callDataCopyInRust:
         gas: !!int -1
         value: !!int -1
       network:
-        - ALL
+        - "Byzantium"
       result:
         # initialBalance  CALLDATACOPY*length    SSTORE  txCost  dataCost
         # 100000000000   - ( 3 * 2 )           - 20000 - 21000  - 136 = 99999958858        

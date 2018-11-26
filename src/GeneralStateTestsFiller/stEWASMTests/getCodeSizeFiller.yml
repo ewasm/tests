@@ -34,7 +34,7 @@ getCodeSize:
         gas: !!int -1
         value: !!int -1
       network:
-        - ALL
+        - "Byzantium"
       result:
         # getCodeSize:       2
         # storageStore:  20000

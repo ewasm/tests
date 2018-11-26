@@ -35,7 +35,7 @@ create:
         gas: !!int -1
         value: !!int -1
       network:
-        - ALL
+        - "Byzantium"
       result:
         # InitialBalance   CREATE   txCost   createMessage 
         # 100000000000   - 32000  - 21000  - 6838454       = 99999947000

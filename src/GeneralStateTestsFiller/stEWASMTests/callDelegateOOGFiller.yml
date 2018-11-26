@@ -77,7 +77,7 @@ callDelegateOOG:
         gas: !!int -1
         value: !!int -1
       network:
-        - ALL
+        - "Byzantium"
       result:
         # gas sent to contract 2: 20001
         # initialBalance CALLDELEGATE (Contract 2) SSTORE txCost

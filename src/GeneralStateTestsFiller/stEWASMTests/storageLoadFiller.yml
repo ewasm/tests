@@ -38,7 +38,7 @@ storageLoad:
         gas: !!int -1
         value: !!int -1
       network:
-        - ALL
+        - "Byzantium"
       result:
         # initialBalance - sload - sstore - txcost - datacost
         # 100000000000   - 200   - 20000  - 21000  - 136

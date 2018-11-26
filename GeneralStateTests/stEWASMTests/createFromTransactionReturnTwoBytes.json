@@ -2,10 +2,10 @@
     "createFromTransactionReturnTwoBytes" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "testeth 1.5.0-alpha.4",
-            "lllcversion" : "Version: 0.4.20-develop.2017.12.3+commit.4cad0b22.Linux.g++",
+            "filledwith" : "testeth 1.5.0-alpha.6",
+            "lllcversion" : "Version: 0.5.0-develop.2018.11.8+commit.20481055.Linux.g++",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/createFromTransactionReturnTwoBytesFiller.yml",
-            "sourceHash" : "4d90d68f2a8c1387ecef2c5edca353ada9c65a7bfbe1f5eaf712d1b8238e5689"
+            "sourceHash" : "305e7e0ac5c7967cd6bb4a241f4281542ac6469d52063acf8f1d283ed36b9e0b"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",

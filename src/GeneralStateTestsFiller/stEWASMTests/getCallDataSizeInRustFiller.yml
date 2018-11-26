@@ -69,7 +69,7 @@ getCallDataSizeInRust:
         gas: !!int -1
         value: !!int -1
       network:
-        - ALL
+        - "Byzantium"
       result:
         # InitialBalance - CALLDATASIZE - SSTORE - DATA (16*68) - TXCOST
         # 100000000000   - 2            - 20000  - 1088         - 21000 = 99999957910

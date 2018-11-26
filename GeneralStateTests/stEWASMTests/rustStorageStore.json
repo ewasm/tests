@@ -2,10 +2,10 @@
     "rustStorageStore" : {
         "_info" : {
             "comment" : "",
-            "filledwith" : "testeth 1.5.0-alpha.4",
-            "lllcversion" : "Version: 0.4.20-develop.2017.12.3+commit.4cad0b22.Linux.g++",
+            "filledwith" : "testeth 1.5.0-alpha.6",
+            "lllcversion" : "Version: 0.5.0-develop.2018.11.8+commit.20481055.Linux.g++",
             "source" : "src/GeneralStateTestsFiller/stEWASMTests/rustStorageStoreFiller.yml",
-            "sourceHash" : "c703274a8acbc558ce22fc9b697a1e80cfebde9cd4ccde2e6617ac026bdaa723"
+            "sourceHash" : "e827047f6bc7fd9c6e11cc64349d54d68d7f2f091d333b3c7b67b6898d214c8d"
         },
         "env" : {
             "currentCoinbase" : "0x2adc25665018aa1fe0e6bc666dac8fc2697ff9ba",

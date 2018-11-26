@@ -5,6 +5,7 @@ branches:
   only:
     - master
     - develop
+    - wasm-tests
 sudo: false
 install: "pip install pyyaml jsonschema pysha3"
 script:
