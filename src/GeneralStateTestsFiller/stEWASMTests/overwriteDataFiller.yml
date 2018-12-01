@@ -1,0 +1,55 @@
+# create contract from transaction overwrite previous data
+---
+overwriteData:
+  env:
+    currentCoinbase: 2adc25665018aa1fe0e6bc666dac8fc2697ff9ba
+    currentDifficulty: '0x020000'
+    currentGasLimit: '89128960'
+    currentNumber: '1'
+    currentTimestamp: '1000'
+    previousHash: 5e20a0453cecd065ea59c37ac63e079ee08998b6045136a8ce6635c7912ec0b6
+  pre:
+    # tx sender
+    a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+      balance: '100000000000'
+      code: ''
+      nonce: ''
+      storage: {}
+  expect:
+    - indexes:
+        data: !!int -1
+        gas: !!int -1
+        value: !!int -1
+      network:
+        - "Byzantium"
+      result:
+        a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          balance: '99999929052'
+        # newly-created contract
+        6295ee1b4f6dd65047762f924ecd367c17eabf8f:
+          code: '0x0061736d01000000010401600000030201000503010001071102066d656d6f72790200046d61696e00000a05010300010b'
+  transaction:
+    data:
+    - |
+      (module
+        (import "ethereum" "finish" (func $finish (param i32 i32)))
+        (memory 100)
+        (data (i32.const 0)  "\01\02\03\04\05\06\07")
+        (data (i32.const 0)  "\00\61\73\6d\01\00\00\00\01\04\01\60\00\00\03\02\01\00\05\03\01\00\01\07\11\02\06\6d\65\6d\6f\72\79\02\00\04\6d\61\69\6e\00\00\0a\05\01\03\00\01\0b")
+        (export "memory" (memory 0))
+        (export "main" (func $main))
+        (func $main
+          (call $finish
+            (i32.const 0)
+            (i32.const 49))
+        )
+      )
+
+    gasLimit:
+    - '0x5000001'
+    gasPrice: '0x01'
+    nonce: '0x00'
+    secretKey: 45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8
+    to: ''
+    value:
+    - '0'
