@@ -33,7 +33,7 @@ overwriteData:
     - |
       (module
         (import "ethereum" "finish" (func $finish (param i32 i32)))
-        (memory 100)
+        (memory 1)
         (data (i32.const 0)  "\01\02\03\04\05\06\07")
         (data (i32.const 0)  "\00\61\73\6d\01\00\00\00\01\04\01\60\00\00\03\02\01\00\05\03\01\00\01\07\11\02\06\6d\65\6d\6f\72\79\02\00\04\6d\61\69\6e\00\00\0a\05\01\03\00\01\0b")
         (export "memory" (memory 0))
