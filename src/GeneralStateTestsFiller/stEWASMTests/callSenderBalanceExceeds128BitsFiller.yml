@@ -85,7 +85,7 @@ callSenderBalanceExceeds128Bits:
         gas: !!int -1
         value: !!int -1
       network:
-        - 'Byzantium'
+        - ALL
       result:
         # Balances remain the same as because of:
         # InternalError: Account balance (or transaction value) exceeds 128 bits
