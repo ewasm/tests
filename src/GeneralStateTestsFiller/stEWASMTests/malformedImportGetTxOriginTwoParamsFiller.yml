@@ -18,7 +18,7 @@ malformedImportGetTxOriginTwoParams:
       balance: '100000000000'
       code: |
         (module
-          (import "ethereum" "getTxOrigin" (func $getTxOrigin))
+          (import "ethereum" "getTxOrigin" (func $getTxOrigin (param i32 i32)))
           (import "ethereum" "storageStore" (func $storageStore (param i32 i32)))
           (memory 1)
           (data (i32.const 0) "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00") ;; key 0
@@ -33,7 +33,7 @@ malformedImportGetTxOriginTwoParams:
             
             (i32.store (get_local $valOffset) (i32.const 1)) ;; value 1
 
-            (call $getTxOrigin)
+            (call $getTxOrigin (i32.const 64) (i32.const 0))
             
             ;; this storageStore should not be called because of the previous exception
             (call $storageStore (get_local $keyOffset) (get_local $valOffset))))
