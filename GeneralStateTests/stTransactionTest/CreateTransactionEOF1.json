@@ -2,16 +2,17 @@
     "CreateTransactionEOF1" : {
         "_info" : {
             "comment" : "",
-            "filling-rpc-server" : "evm version 1.10.4-unstable-950d99c2-20210602",
-            "filling-tool-version" : "retesteth-0.1.1-eip1559+commit.458b2c9b.Linux.g++",
-            "lllcversion" : "Version: 0.5.14-develop.2021.5.18+commit.14c9d5de.mod.Linux.g++",
+            "filling-rpc-server" : "evm version 1.10.4-unstable-d601654b-20210621",
+            "filling-tool-version" : "retesteth-0.1.1-eip1559+commit.5ad217c6.Linux.g++",
+            "lllcversion" : "Version: 0.5.14-develop.2021.4.29+commit.14c9d5de.Linux.clang",
             "source" : "src/GeneralStateTestsFiller/stTransactionTest/CreateTransactionEOF1Filler.yml",
-            "sourceHash" : "0f65977b043b9ffbb6629d146f36e03a37e787748a8d1742ddd98c075b551b48",
+            "sourceHash" : "27969c79ffb2678ef4089a5d86d9b63e9dbbb38ad455ecb98369ec364b220e6f",
             "labels" : {
                 "0" : ":label deploying_0xef",
                 "1" : ":label deploying_0xef00",
                 "2" : ":label deploying_0xef0000",
-                "3" : ":label deploying_0xef00..00"
+                "3" : ":label deploying_0xef00..00",
+                "4" : ":label deploying_valid_eof1"
             }
         },
         "env" : {
@@ -64,6 +65,16 @@
                     "hash" : "0xcfa27786e7fa0fc4fa762f575a7d7c6f56f72b33fd345dd9da49c8b95375b08a",
                     "txbytes" : "0xf856800a8301117080808a60ef60005360206000f31ca06c4c97a3d578795b697d8c12d52fbb77d86893a36ea774286778ed74069eba8fa017bdd271d998d34804ac890a6565cb2aebdc1b9a7f91659801f3d67d96d90e05",
                     "logs" : "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347"
+                },
+                {
+                    "indexes" : {
+                        "data" : 4,
+                        "gas" : 0,
+                        "value" : 0
+                    },
+                    "hash" : "0xd67627d01529c324e583bd987a677ee5dfd3f6730d7c0d81ca318298a76e7c1b",
+                    "txbytes" : "0xf875800a830111708080a97fefcafe01010002020004006000aabbccdd00000000000000000000000000000060005260116000f31ba00c75dc4a80a16edd6324cae675998d2e17b2faa4dea0b1b56bd58c1d00825d02a00fe95c295bea8200ad43e3b05e833023d9394c06530f262d51bb7f5bb5c91813",
+                    "logs" : "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347"
                 }
             ],
             "London" : [
@@ -106,6 +117,28 @@
                     "hash" : "0xca5864422283a4a41744868af2e5184b91bc3224cd3acac1577954a90280cdff",
                     "txbytes" : "0xf856800a8301117080808a60ef60005360206000f31ca06c4c97a3d578795b697d8c12d52fbb77d86893a36ea774286778ed74069eba8fa017bdd271d998d34804ac890a6565cb2aebdc1b9a7f91659801f3d67d96d90e05",
                     "logs" : "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347"
+                },
+                {
+                    "indexes" : {
+                        "data" : 4,
+                        "gas" : 0,
+                        "value" : 0
+                    },
+                    "hash" : "0xca5864422283a4a41744868af2e5184b91bc3224cd3acac1577954a90280cdff",
+                    "txbytes" : "0xf875800a830111708080a97fefcafe01010002020004006000aabbccdd00000000000000000000000000000060005260116000f31ba00c75dc4a80a16edd6324cae675998d2e17b2faa4dea0b1b56bd58c1d00825d02a00fe95c295bea8200ad43e3b05e833023d9394c06530f262d51bb7f5bb5c91813",
+                    "logs" : "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347"
+                }
+            ],
+            "London+3540" : [
+                {
+                    "indexes" : {
+                        "data" : 4,
+                        "gas" : 0,
+                        "value" : 0
+                    },
+                    "hash" : "0x00e2d7bac6edf2611e45a64f7331c23116be0fd8755a2822db38c4392df24475",
+                    "txbytes" : "0xf875800a830111708080a97fefcafe01010002020004006000aabbccdd00000000000000000000000000000060005260116000f31ba00c75dc4a80a16edd6324cae675998d2e17b2faa4dea0b1b56bd58c1d00825d02a00fe95c295bea8200ad43e3b05e833023d9394c06530f262d51bb7f5bb5c91813",
+                    "logs" : "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347"
                 }
             ]
         },
@@ -123,7 +156,8 @@
                 "0x60ef60005360016000f3",
                 "0x60ef60005360026000f3",
                 "0x60ef60005360036000f3",
-                "0x60ef60005360206000f3"
+                "0x60ef60005360206000f3",
+                "0x7fefcafe01010002020004006000aabbccdd00000000000000000000000000000060005260116000f3"
             ],
             "gasPrice" : "0x0a",
             "gasLimit" : [
