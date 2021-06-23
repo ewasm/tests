@@ -28,6 +28,7 @@ CreateTransactionEOF1:
       #- ':yul { mstore8(0, 0xef) return(0, 32) }'
       - ':label deploying_0xef00..00 :raw 0x60ef60005360206000f3'
       - ':label deploying_valid_eof1 :yul { mstore(0, 0xEFCAFE01010002020004006000AABBCCDD000000000000000000000000000000) return(0, 17) }'
+      - ':label formatted_initcode_deploying_valid_eof1 :raw 0xEFCAFE01010029007fefcafe01010002020004006000aabbccdd00000000000000000000000000000060005260116000f3'
     gasLimit:
       - 70000
     gasPrice: 10
@@ -169,6 +170,44 @@ CreateTransactionEOF1:
          shouldnotexist: 1
     - indexes:
        data: ':label deploying_valid_eof1'
+       gas: !!int -1
+       value: !!int -1
+      network:
+        - 'London+3540'
+      result:
+       a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+         nonce: 1
+       6295ee1b4f6dd65047762f924ecd367c17eabf8f:
+         balance: 0
+         code: '0xEFCAFE01010002020004006000AABBCCDD'
+         nonce: 1
+
+    - indexes:
+       data: ':label formatted_initcode_deploying_valid_eof1'
+       gas: !!int -1
+       value: !!int -1
+      network:
+        - 'Berlin'
+      result:
+       a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+         nonce: 1
+         balance: 999300000
+       6295ee1b4f6dd65047762f924ecd367c17eabf8f:
+         shouldnotexist: 1
+    - indexes:
+       data: ':label formatted_initcode_deploying_valid_eof1'
+       gas: !!int -1
+       value: !!int -1
+      network:
+        - 'London'
+      result:
+       a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+         nonce: 1
+         balance: 999300000
+       6295ee1b4f6dd65047762f924ecd367c17eabf8f:
+         shouldnotexist: 1
+    - indexes:
+       data: ':label formatted_initcode_deploying_valid_eof1'
        gas: !!int -1
        value: !!int -1
       network:
