@@ -1,0 +1,182 @@
+EOF1_ContractCalls:
+  env:
+    currentCoinbase: 2adc25665018aa1fe0e6bc666dac8fc2697ff9ba
+    currentDifficulty: '0x020000'
+    currentGasLimit: '89128960'
+    currentBaseFee: '10'
+    currentNumber: '1'
+    currentTimestamp: '1000'
+    previousHash: 5e20a0453cecd065ea59c37ac63e079ee08998b6045136a8ce6635c7912ec0b6
+
+  pre:
+    a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+      balance: 10000000
+      code: ''
+      nonce: 0
+      storage: {}
+    b94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+      balance: 0
+      code: ':yul { sstore(0, call(100000, shr(96, calldataload(0)), 0, 0, 0, 0, 0)) }'
+      nonce: 0
+      storage: {}
+
+    c94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+      balance: 0
+      # code: ':yul { sstore(0, 1) }'
+      # code: ':raw 0xEFCAFE01010005006001600055'
+      # code: ':yul { sstore(0, 1) stop() }'
+      code: ':raw 0xEFCAFE0101000600600160005500'
+      nonce: 0
+      storage: {}
+
+    d94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+      balance: 0
+      # code: ':yul { sstore(0, 1) }'
+      code: ':raw 0xEFCAFE01010005006001600055'
+      nonce: 0
+      storage: {}
+
+    e94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+      balance: 0
+      # code section: ':yul { sstore(0, 1) }'
+      # data section containg code: ':yul { sstore(1, 1) stop() }'
+      code: ':raw 0xEFCAFE01010005020006006001600055600160015500'
+      nonce: 0
+      storage: {}
+
+    f94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+      balance: 0
+      # code section: 'jump x stop()'
+      # data section containg code: 'x: sstore(0, 1) stop()'
+      code: ':raw 0xEFCAFE0101000402000800600F56005B600160005500'
+      nonce: 0
+      storage: {}
+
+  transaction:
+    data:
+      - ':raw 0xc94f5374fce5edbc8e2a8697c15331677e6ebf0b'
+      - ':raw 0xd94f5374fce5edbc8e2a8697c15331677e6ebf0b'
+      - ':raw 0xe94f5374fce5edbc8e2a8697c15331677e6ebf0b'
+      - ':raw 0xf94f5374fce5edbc8e2a8697c15331677e6ebf0b'
+    gasLimit:
+      - 700000
+    gasPrice: 10
+    nonce: 0
+    secretKey: 45a915e4d060149eb4365960e6a7a45f334393093061116b197e3240065ff2d8
+    to: 'b94f5374fce5edbc8e2a8697c15331677e6ebf0b'
+    value:
+    - 0
+
+  expect:
+    - indexes:
+       data: !!int 0
+       gas: !!int -1
+       value: !!int -1
+      network:
+        - '<=London'
+      result:
+        a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          nonce: 1
+        b94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          storage: {}
+        c94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          storage: {}
+    - indexes:
+       data: !!int 0
+       gas: !!int -1
+       value: !!int -1
+      network:
+        - 'London+3540'
+      result:
+        a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          nonce: 1
+        b94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          storage:
+            '0': '1'
+        c94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          storage:
+            '0': '1'
+
+    - indexes:
+       data: !!int 1
+       gas: !!int -1
+       value: !!int -1
+      network:
+        - '<=London'
+      result:
+        a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          nonce: 1
+        b94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          storage: {}
+        d94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          storage: {}
+    # Same expectation, but for London execution fails on EF byte, for 3540 it fails on reaching code section end
+    - indexes:
+       data: !!int 1
+       gas: !!int -1
+       value: !!int -1
+      network:
+        - 'London+3540'
+      result:
+        a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          nonce: 1
+        b94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          storage: {}
+        d94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          storage: {}
+
+    - indexes:
+       data: !!int 2
+       gas: !!int -1
+       value: !!int -1
+      network:
+        - '<=London'
+      result:
+        a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          nonce: 1
+        b94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          storage: {}
+        e94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          storage: {}
+    # Same expectation, but for London execution fails on EF byte, for 3540 it fails on reaching code section end
+    - indexes:
+       data: !!int 2
+       gas: !!int -1
+       value: !!int -1
+      network:
+        - 'London+3540'
+      result:
+        a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          nonce: 1
+        b94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          storage: {}
+        e94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          storage: {}
+
+    - indexes:
+       data: !!int 3
+       gas: !!int -1
+       value: !!int -1
+      network:
+        - '<=London'
+      result:
+        a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          nonce: 1
+        b94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          storage: {}
+        f94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          storage: {}
+    # Same expectation, but for London execution fails on EF byte, for 3540 it fails on invalid jump
+    - indexes:
+       data: !!int 3
+       gas: !!int -1
+       value: !!int -1
+      network:
+        - 'London+3540'
+      result:
+        a94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          nonce: 1
+        b94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          storage: {}
+        f94f5374fce5edbc8e2a8697c15331677e6ebf0b:
+          storage: {}
